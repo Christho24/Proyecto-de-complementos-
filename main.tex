@@ -46,15 +46,10 @@ Camila Romero}
 
 \subsection*{Contraparte}
 \begin{itemize}
-<<<<<<< HEAD
-    \item Daniel Moreno (dmoreno@uft.edu)
-\end{itemize}
-=======
+
     \item Daniel Moreno (dmoreno@uft.cl)
 \end{itemize}
 
-
->>>>>>> 7f41f9465177b2d1d22145dc3f81ff638f0acff9
 \subsection*{Historia de versiones}
 
 \begin{table}[H]
@@ -65,9 +60,11 @@ Camila Romero}
 \hline
 \textbf{Versión} & \textbf{Fecha} & \textbf{Descripción} & \textbf{Autor} \\
 \hline
-1.0 & 2026-04-05 & Versión inicial & Christopher Abarca \\
+0.1 & 2026-04-05 & Versión inicial & Christopher Abarca \\
 \hline
-1.1 & 2026-04-11 & Entrega 1 & Todos\\
+0.2 & 2026-04-11 & Entrega 1 & Todos\\
+\hline
+0.3 & 2026-06-06 & Entrega 2 & Todos\\
 \hline
 \end{tabular}
 \end{table}
@@ -124,7 +121,6 @@ Dentro del entorno operativo participan principalmente tres grupos de actores:
 \begin{itemize}
 \item \textbf{Estudiantes:} requieren un sistema que les permita acceder de forma rápida y organizada a ofertas laborales acordes a su carrera, intereses y disponibilidad. Asimismo, necesitan un espacio donde puedan gestionar su perfil profesional y centralizar información relevante para futuras postulaciones.
 
-```
 \vspace{0.2cm}
 
 \item \textbf{Empresas externas y áreas internas de la universidad:} necesitan un canal formal y estructurado para publicar vacantes, administrar postulaciones y acceder a perfiles estudiantiles compatibles con sus requerimientos.
@@ -132,7 +128,7 @@ Dentro del entorno operativo participan principalmente tres grupos de actores:
 \vspace{0.2cm}
 
 \item \textbf{Administradores del sistema:} serán responsables de supervisar el funcionamiento general de la plataforma, validar organizaciones registradas y garantizar que las ofertas publicadas cumplan con los lineamientos establecidos por la universidad.
-```
+
 
 \end{itemize}
 
@@ -163,7 +159,7 @@ El sistema deberá satisfacer la necesidad de conectar de forma eficiente a estu
 \begin{itemize}
 \item Publicar y administrar ofertas laborales con información detallada sobre cargos, funciones, sueldo, jornada y modalidad de trabajo.
 
-```
+
 \vspace{0.2cm}
 
 \item Facilitar la búsqueda y filtrado de ofertas según criterios relevantes para los estudiantes.
@@ -179,7 +175,6 @@ El sistema deberá satisfacer la necesidad de conectar de forma eficiente a estu
 \vspace{0.2cm}
 
 \item Identificar automáticamente estudiantes compatibles con determinadas vacantes mediante un módulo de recomendación basado en criterios académicos y laborales.
-```
 
 \end{itemize}
 
@@ -371,20 +366,319 @@ Gobierno de Chile, Ministerio del Trabajo y Previsión Social,
 
 
 
-\section{Requisitos del sistema}%(cami)
+\section{Requisitos del sistema}%(Chris)
+Este capítulo presenta los requisitos identificados para la plataforma Finis Trabaja, los cuales fueron obtenidos a partir del análisis del problema planteado por la Universidad Finis Terrae y de las necesidades de los distintos actores involucrados. Los requisitos permiten definir el comportamiento esperado del sistema, sus funcionalidades principales y las restricciones que deben cumplirse para satisfacer los objetivos del proyecto
+
+\subsection{Lista de Requisitos Reducida}
+
+En esta sección se presentan los requisitos funcionales identificados para la plataforma \textit{Finis Trabaja}. Estos requisitos describen las principales capacidades que debe entregar el sistema para satisfacer las necesidades de los actores involucrados: estudiantes, empresas externas, áreas internas de la universidad, administradores y visitantes.
+
+\vspace{5pt}
+
+La lista reducida permite resumir de forma clara las funcionalidades esenciales del sistema antes de pasar a la especificación detallada de cada requisito. En este caso, los requisitos se enfocan en el registro de usuarios, la gestión del Currículum Vitae Virtual, la publicación y búsqueda de ofertas laborales, el proceso de postulación y el módulo de recomendación automática entre ofertas y perfiles estudiantiles.
+
+\vspace{5pt}
+A continuación, se presentan los requisitos funcionales del sistema:
+
+\begin{enumerate}
+    \item \textbf{RU01. Registrar usuario} \\
+    Permitir que los estudiantes, empresas externas y áreas internas de la universidad puedan registrarse en la plataforma mediante correo electrónico, contraseña y datos básicos de identificación.
+
+    \item \textbf{RU02. Iniciar sesión} \\
+    Permitir que los usuarios registrados accedan a la plataforma mediante sus credenciales, identificando su tipo de usuario para habilitar las funcionalidades correspondientes.
+
+    \item \textbf{RU03. Crear Currículum Vitae Virtual (CVV)} \\
+    Permitir que el estudiante cree y mantenga un perfil profesional con sus datos personales, carrera, especialidades, experiencia laboral, logros, disponibilidad, pretensión de sueldo y modalidad de trabajo preferida.
+
+    \item \textbf{RU04. Configurar visibilidad del CVV} \\
+    Permitir que el estudiante defina si su perfil será visible para empresas externas o solo para procesos internos de la universidad.
+
+    \item \textbf{RU05. Validar empresas y áreas internas} \\
+    Permitir que el administrador revise, apruebe o rechace las solicitudes de registro realizadas por empresas externas y áreas internas antes de habilitar la publicación de ofertas.
+
+    \item \textbf{RU06. Publicar oferta laboral} \\
+    Permitir que una empresa o área interna validada publique una oferta laboral indicando cargo, funciones, carrera requerida, sueldo ofrecido, jornada, ubicación y modalidad de trabajo.
+
+    \item \textbf{RU07. Adjuntar archivos a una oferta} \\
+    Permitir que la empresa o área interna adjunte documentos o imágenes relacionados con la oferta laboral, como descripciones ampliadas, presentaciones o material informativo.
+
+    \item \textbf{RU08. Visualizar ofertas laborales} \\
+    Permitir que cualquier visitante pueda consultar las ofertas laborales publicadas sin necesidad de registrarse en la plataforma.
+
+    \item \textbf{RU09. Filtrar ofertas laborales} \\
+    Permitir que los usuarios filtren las ofertas por carrera, rango de sueldo, tipo de rol, ubicación, modalidad y tipo de jornada.
+
+    \item \textbf{RU10. Recomendar estudiantes para una oferta} \\
+    Permitir que el sistema cruce la información de una oferta laboral con los perfiles CVV de los estudiantes para generar un listado ordenado de candidatos compatibles.
+
+    \item \textbf{RU11. Calcular compatibilidad} \\
+    Permitir que el sistema calcule el grado de compatibilidad entre una oferta y un estudiante considerando carrera, rol de interés, sueldo, jornada y modalidad de trabajo.
+
+    \item \textbf{RU12. Revisar recomendaciones} \\
+    Permitir que el administrador visualice el listado de estudiantes recomendados para cada oferta, junto con el porcentaje o nivel de compatibilidad calculado.
+
+    \item \textbf{RU13. Compartir recomendaciones con la empresa} \\
+    Permitir que el administrador comparta con la empresa oferente el listado de estudiantes recomendados cuando la universidad lo autorice.
+
+    \item \textbf{RU14. Postular a una oferta laboral} \\
+    Permitir que el estudiante postule directamente a una oferta laboral desde la plataforma, adjuntando opcionalmente una carta de presentación.
+
+    \item \textbf{RU15. Revisar postulantes} \\
+    Permitir que la empresa o área interna acceda al listado de estudiantes que postularon a cada una de sus ofertas y pueda revisar el CVV de cada postulante.
+\end{enumerate}
 
 
 
-\subsection{Lista de Requisitos Reducida}%(cami)
+\subsection{Especificación de Requisitos}
 
+A continuación, se presentan las especificaciones de los requisitos de usuario identificados para el sistema:
 
+\begin{table}[H]
+\centering
+\caption{Tabla 3.2-1: Especificaciones del requisito RU01}
+\begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{3cm}|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{5cm}|}
+\hline
+\textbf{ID} & RU01 & \textbf{Nombre corto} & Registrar usuario \\ \hline
+\textbf{Descripción} & \multicolumn{3}{p{11.2cm}|}{El usuario se registra en la plataforma indicando su tipo de cuenta: estudiante, empresa externa o área interna de la universidad.} \\ \hline
+\textbf{Entrada (Precondiciones)} & \multicolumn{3}{p{11.2cm}|}{Correo electrónico válido, contraseña y datos básicos del usuario.} \\ \hline
+\textbf{Salidas (Postcondiciones)} & \multicolumn{3}{p{11.2cm}|}{Usuario registrado correctamente. Si corresponde a empresa externa o área interna, queda pendiente de validación por parte del administrador.} \\ \hline
+\textbf{Prioridad} & \multicolumn{3}{p{11.2cm}|}{Alta} \\ \hline
+\end{tabular}
+\end{table}
 
-\subsection{Especificación de Requisitos}%(cami)
+\begin{table}[H]
+\centering
+\caption{Tabla 3.2-2: Especificaciones del requisito RU02}
+\begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{3cm}|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{5cm}|}
+\hline
+\textbf{ID} & RU02 & \textbf{Nombre corto} & Iniciar sesión \\ \hline
+\textbf{Descripción} & \multicolumn{3}{p{11.2cm}|}{El usuario ingresa a la plataforma mediante correo electrónico y contraseña, accediendo a las funciones permitidas según su tipo de cuenta.} \\ \hline
+\textbf{Entrada (Precondiciones)} & \multicolumn{3}{p{11.2cm}|}{Usuario previamente registrado, correo electrónico y contraseña válidos.} \\ \hline
+\textbf{Salidas (Postcondiciones)} & \multicolumn{3}{p{11.2cm}|}{Acceso concedido a la plataforma según el rol del usuario. Si las credenciales son incorrectas, el acceso es denegado.} \\ \hline
+\textbf{Prioridad} & \multicolumn{3}{p{11.2cm}|}{Alta} \\ \hline
+\end{tabular}
+\end{table}
 
+\begin{table}[H]
+\centering
+\caption{Tabla 3.2-3: Especificaciones del requisito RU03}
+\begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{3cm}|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{5cm}|}
+\hline
+\textbf{ID} & RU03 & \textbf{Nombre corto} & Crear CVV \\ \hline
+\textbf{Descripción} & \multicolumn{3}{p{11.2cm}|}{El estudiante crea su Currículum Vitae Virtual registrando datos personales, carrera, especialidades, experiencia, logros, disponibilidad, pretensión de sueldo y modalidad preferida.} \\ \hline
+\textbf{Entrada (Precondiciones)} & \multicolumn{3}{p{11.2cm}|}{Estudiante registrado e iniciado sesión en la plataforma.} \\ \hline
+\textbf{Salidas (Postcondiciones)} & \multicolumn{3}{p{11.2cm}|}{CVV creado y asociado al perfil del estudiante.} \\ \hline
+\textbf{Prioridad} & \multicolumn{3}{p{11.2cm}|}{Alta} \\ \hline
+\end{tabular}
+\end{table}
 
+\begin{table}[H]
+\centering
+\caption{Tabla 3.2-4: Especificaciones del requisito RU04}
+\begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{3cm}|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{5cm}|}
+\hline
+\textbf{ID} & RU04 & \textbf{Nombre corto} & Configurar visibilidad del CVV \\ \hline
+\textbf{Descripción} & \multicolumn{3}{p{11.2cm}|}{El estudiante configura si su Currículum Vitae Virtual será visible para empresas externas o solo para procesos internos de la universidad.} \\ \hline
+\textbf{Entrada (Precondiciones)} & \multicolumn{3}{p{11.2cm}|}{Estudiante registrado, con sesión iniciada y CVV creado.} \\ \hline
+\textbf{Salidas (Postcondiciones)} & \multicolumn{3}{p{11.2cm}|}{Preferencia de visibilidad del CVV guardada correctamente en el sistema.} \\ \hline
+\textbf{Prioridad} & \multicolumn{3}{p{11.2cm}|}{Media} \\ \hline
+\end{tabular}
+\end{table}
 
+\begin{table}[H]
+\centering
+\caption{Tabla 3.2-5: Especificaciones del requisito RU05}
+\begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{3cm}|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{5cm}|}
+\hline
+\textbf{ID} & RU05 & \textbf{Nombre corto} & Validar empresas y áreas internas \\ \hline
+\textbf{Descripción} & \multicolumn{3}{p{11.2cm}|}{El administrador revisa las solicitudes de registro de empresas externas y áreas internas, pudiendo aprobarlas o rechazarlas.} \\ \hline
+\textbf{Entrada (Precondiciones)} & \multicolumn{3}{p{11.2cm}|}{Solicitud de registro enviada por una empresa externa o área interna.} \\ \hline
+\textbf{Salidas (Postcondiciones)} & \multicolumn{3}{p{11.2cm}|}{Empresa o área interna aprobada para publicar ofertas, o solicitud rechazada por el administrador.} \\ \hline
+\textbf{Prioridad} & \multicolumn{3}{p{11.2cm}|}{Alta} \\ \hline
+\end{tabular}
+\end{table}
 
-\subsection{Matriz de Trazado RU/CU ó HU/CU}%(cami)
+\begin{table}[H]
+\centering
+\caption{Tabla 3.2-6: Especificaciones del requisito RU06}
+\begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{3cm}|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{5cm}|}
+\hline
+\textbf{ID} & RU06 & \textbf{Nombre corto} & Publicar oferta laboral \\ \hline
+\textbf{Descripción} & \multicolumn{3}{p{11.2cm}|}{La empresa externa o área interna validada publica una oferta laboral indicando cargo, funciones, carrera requerida, sueldo, jornada, ubicación y modalidad de trabajo.} \\ \hline
+\textbf{Entrada (Precondiciones)} & \multicolumn{3}{p{11.2cm}|}{Empresa externa o área interna validada, con sesión iniciada y datos de la oferta completos.} \\ \hline
+\textbf{Salidas (Postcondiciones)} & \multicolumn{3}{p{11.2cm}|}{Oferta laboral publicada y disponible para ser visualizada por los usuarios de la plataforma.} \\ \hline
+\textbf{Prioridad} & \multicolumn{3}{p{11.2cm}|}{Alta} \\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H]
+\centering
+\caption{Tabla 3.2-7: Especificaciones del requisito RU07}
+\begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{3cm}|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{5cm}|}
+\hline
+\textbf{ID} & RU07 & \textbf{Nombre corto} & Adjuntar archivos a oferta \\ \hline
+\textbf{Descripción} & \multicolumn{3}{p{11.2cm}|}{La empresa externa o área interna puede adjuntar documentos o imágenes relacionados con la oferta laboral, como descripciones ampliadas, presentaciones corporativas o material informativo.} \\ \hline
+\textbf{Entrada (Precondiciones)} & \multicolumn{3}{p{11.2cm}|}{Empresa o área interna validada, oferta laboral creada y archivo permitido para adjuntar.} \\ \hline
+\textbf{Salidas (Postcondiciones)} & \multicolumn{3}{p{11.2cm}|}{Archivo asociado correctamente a la oferta laboral publicada.} \\ \hline
+\textbf{Prioridad} & \multicolumn{3}{p{11.2cm}|}{Media} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Tabla 3.2-8: Especificaciones del requisito RU08}
+\begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{3cm}|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{5cm}|}
+\hline
+\textbf{ID} & RU08 & \textbf{Nombre corto} & Visualizar ofertas laborales \\ \hline
+\textbf{Descripción} & \multicolumn{3}{p{11.2cm}|}{Cualquier visitante puede consultar las ofertas laborales publicadas en la plataforma sin necesidad de iniciar sesión ni registrarse.} \\ \hline
+\textbf{Entrada (Precondiciones)} & \multicolumn{3}{p{11.2cm}|}{Existencia de ofertas laborales publicadas en la plataforma.} \\ \hline
+\textbf{Salidas (Postcondiciones)} & \multicolumn{3}{p{11.2cm}|}{Listado de ofertas laborales visible para el visitante o usuario interesado.} \\ \hline
+\textbf{Prioridad} & \multicolumn{3}{p{11.2cm}|}{Alta} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Tabla 3.2-9: Especificaciones del requisito RU09}
+\begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{3cm}|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{5cm}|}
+\hline
+\textbf{ID} & RU09 & \textbf{Nombre corto} & Filtrar ofertas laborales \\ \hline
+\textbf{Descripción} & \multicolumn{3}{p{11.2cm}|}{El usuario puede filtrar las ofertas laborales según carrera, rango de sueldo, tipo de rol, ubicación, modalidad y tipo de jornada.} \\ \hline
+\textbf{Entrada (Precondiciones)} & \multicolumn{3}{p{11.2cm}|}{Listado de ofertas disponible y criterios de búsqueda seleccionados por el usuario.} \\ \hline
+\textbf{Salidas (Postcondiciones)} & \multicolumn{3}{p{11.2cm}|}{Listado de ofertas filtrado según los criterios ingresados.} \\ \hline
+\textbf{Prioridad} & \multicolumn{3}{p{11.2cm}|}{Alta} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Tabla 3.2-10: Especificaciones del requisito RU10}
+\begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{3cm}|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{5cm}|}
+\hline
+\textbf{ID} & RU10 & \textbf{Nombre corto} & Recomendar estudiantes para una oferta \\ \hline
+\textbf{Descripción} & \multicolumn{3}{p{11.2cm}|}{El sistema analiza la información de las ofertas laborales y los perfiles CVV para identificar los estudiantes más adecuados para cada vacante.} \\ \hline
+\textbf{Entrada (Precondiciones)} & \multicolumn{3}{p{11.2cm}|}{Existencia de una oferta laboral publicada y perfiles CVV registrados en la plataforma.} \\ \hline
+\textbf{Salidas (Postcondiciones)} & \multicolumn{3}{p{11.2cm}|}{Listado de estudiantes compatibles generado automáticamente para la oferta seleccionada.} \\ \hline
+\textbf{Prioridad} & \multicolumn{3}{p{11.2cm}|}{Alta} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Tabla 3.2-11: Especificaciones del requisito RU11}
+\begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{3cm}|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{5cm}|}
+\hline
+\textbf{ID} & RU11 & \textbf{Nombre corto} & Calcular compatibilidad \\ \hline
+\textbf{Descripción} & \multicolumn{3}{p{11.2cm}|}{El sistema calcula un nivel de compatibilidad entre cada estudiante y una oferta laboral considerando carrera, intereses, sueldo esperado, jornada y modalidad de trabajo.} \\ \hline
+\textbf{Entrada (Precondiciones)} & \multicolumn{3}{p{11.2cm}|}{Oferta laboral y perfil CVV con información suficiente para realizar la comparación.} \\ \hline
+\textbf{Salidas (Postcondiciones)} & \multicolumn{3}{p{11.2cm}|}{Porcentaje o nivel de compatibilidad calculado y asociado al estudiante recomendado.} \\ \hline
+\textbf{Prioridad} & \multicolumn{3}{p{11.2cm}|}{Alta} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Tabla 3.2-12: Especificaciones del requisito RU12}
+\begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{3cm}|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{5cm}|}
+\hline
+\textbf{ID} & RU12 & \textbf{Nombre corto} & Revisar recomendaciones \\ \hline
+\textbf{Descripción} & \multicolumn{3}{p{11.2cm}|}{El administrador puede visualizar los estudiantes recomendados para cada oferta junto con su grado de compatibilidad.} \\ \hline
+\textbf{Entrada (Precondiciones)} & \multicolumn{3}{p{11.2cm}|}{Existencia de recomendaciones generadas por el sistema para una oferta laboral.} \\ \hline
+\textbf{Salidas (Postcondiciones)} & \multicolumn{3}{p{11.2cm}|}{Listado de estudiantes recomendados mostrado al administrador.} \\ \hline
+\textbf{Prioridad} & \multicolumn{3}{p{11.2cm}|}{Media} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Tabla 3.2-13: Especificaciones del requisito RU13}
+\begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{3cm}|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{5cm}|}
+\hline
+\textbf{ID} & RU13 & \textbf{Nombre corto} & Compartir recomendaciones con la empresa \\ \hline
+\textbf{Descripción} & \multicolumn{3}{p{11.2cm}|}{El administrador puede compartir con la empresa oferente el listado de estudiantes recomendados generado por el sistema.} \\ \hline
+\textbf{Entrada (Precondiciones)} & \multicolumn{3}{p{11.2cm}|}{Existencia de recomendaciones generadas y autorización de la universidad para compartirlas.} \\ \hline
+\textbf{Salidas (Postcondiciones)} & \multicolumn{3}{p{11.2cm}|}{Listado de recomendaciones disponible para la empresa correspondiente.} \\ \hline
+\textbf{Prioridad} & \multicolumn{3}{p{11.2cm}|}{Media} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Tabla 3.2-14: Especificaciones del requisito RU14}
+\begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{3cm}|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{5cm}|}
+\hline
+\textbf{ID} & RU14 & \textbf{Nombre corto} & Postular a una oferta laboral \\ \hline
+\textbf{Descripción} & \multicolumn{3}{p{11.2cm}|}{El estudiante puede postular directamente a una oferta laboral publicada en la plataforma, adjuntando opcionalmente una carta de presentación.} \\ \hline
+\textbf{Entrada (Precondiciones)} & \multicolumn{3}{p{11.2cm}|}{Estudiante registrado, con sesión iniciada, CVV creado y oferta laboral disponible.} \\ \hline
+\textbf{Salidas (Postcondiciones)} & \multicolumn{3}{p{11.2cm}|}{Postulación registrada correctamente y asociada a la oferta laboral seleccionada.} \\ \hline
+\textbf{Prioridad} & \multicolumn{3}{p{11.2cm}|}{Alta} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Tabla 3.2-15: Especificaciones del requisito RU15}
+\begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{3cm}|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{5cm}|}
+\hline
+\textbf{ID} & RU15 & \textbf{Nombre corto} & Revisar postulantes \\ \hline
+\textbf{Descripción} & \multicolumn{3}{p{11.2cm}|}{La empresa externa o área interna puede revisar el listado de estudiantes que postularon a cada una de sus ofertas y acceder al CVV de cada postulante.} \\ \hline
+\textbf{Entrada (Precondiciones)} & \multicolumn{3}{p{11.2cm}|}{Empresa o área interna validada, con sesión iniciada y al menos una oferta con postulaciones recibidas.} \\ \hline
+\textbf{Salidas (Postcondiciones)} & \multicolumn{3}{p{11.2cm}|}{Listado de postulantes mostrado junto con el acceso al CVV correspondiente de cada estudiante.} \\ \hline
+\textbf{Prioridad} & \multicolumn{3}{p{11.2cm}|}{Alta} \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Matriz de Trazado RU/CU ó HU/CU}%(Chris)
+La matriz de trazado permite relacionar los requisitos de usuario con los casos de uso definidos para la plataforma \textit{Finis Trabaja}. Su objetivo es verificar que cada requisito funcional tenga una representación dentro del comportamiento del sistema y que cada caso de uso responda a una necesidad concreta del proyecto.
+
+Casos de uso definidos:
+
+\begin{itemize}
+    \item CU01: Registrar usuario
+    \item CU02: Iniciar sesión
+    \item CU03: Crear CVV
+    \item CU04: Modificar CVV
+    \item CU05: Configurar visibilidad del CVV
+    \item CU06: Validar empresas y áreas internas
+    \item CU07: Publicar oferta laboral
+    \item CU08: Adjuntar archivos a oferta
+    \item CU09: Visualizar ofertas laborales
+    \item CU10: Filtrar ofertas laborales
+    \item CU11: Generar recomendaciones
+    \item CU12: Calcular compatibilidad
+    \item CU13: Revisar recomendaciones
+    \item CU14: Compartir recomendaciones
+    \item CU15: Postular a oferta laboral
+    \item CU16: Adjuntar carta de presentación
+    \item CU17: Revisar postulantes
+    \item CU18: Visualizar CVV de postulante
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Matriz de trazado RU/CU}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}c|
+*{18}{>{\columncolor[HTML]{D9EAF7}}c|}}
+\hline
+\textbf{RU/CU} & \textbf{CU01} & \textbf{CU02} & \textbf{CU03} & \textbf{CU04} & \textbf{CU05} & \textbf{CU06} & \textbf{CU07} & \textbf{CU08} & \textbf{CU09} & \textbf{CU10} & \textbf{CU11} & \textbf{CU12} & \textbf{CU13} & \textbf{CU14} & \textbf{CU15} & \textbf{CU16} & \textbf{CU17} & \textbf{CU18} \\ \hline
+\textbf{RU01} & X &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+\textbf{RU02} &  & X &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+\textbf{RU03} &  &  & X & X &  &  &  &  &  &  & X & X &  &  & X &  &  & X \\ \hline
+\textbf{RU04} &  &  &  & X & X &  &  &  &  &  & X & X &  &  &  &  &  &  \\ \hline
+\textbf{RU05} &  &  &  &  &  & X & X &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+\textbf{RU06} &  &  &  &  &  &  & X & X & X & X & X & X &  &  &  &  &  &  \\ \hline
+\textbf{RU07} &  &  &  &  &  &  & X & X &  &  &  &  &  &  &  &  &  &  \\ \hline
+\textbf{RU08} &  &  &  &  &  &  &  &  & X &  &  &  &  &  &  &  &  &  \\ \hline
+\textbf{RU09} &  &  &  &  &  &  &  &  & X & X &  &  &  &  &  &  &  &  \\ \hline
+\textbf{RU10} &  &  & X &  &  &  & X &  &  &  & X & X & X &  &  &  &  &  \\ \hline
+\textbf{RU11} &  &  & X &  &  &  & X &  &  &  & X & X &  &  &  &  &  &  \\ \hline
+\textbf{RU12} &  &  &  &  &  &  &  &  &  &  & X & X & X &  &  &  &  &  \\ \hline
+\textbf{RU13} &  &  &  &  &  &  &  &  &  &  &  &  & X & X &  &  &  &  \\ \hline
+\textbf{RU14} &  & X & X &  &  &  &  &  & X &  &  &  &  &  & X & X &  &  \\ \hline
+\textbf{RU15} &  & X &  &  &  &  &  &  &  &  &  &  &  &  &  &  & X & X \\ \hline
+\end{tabular}
+}
+\end{table}
 
 \section{Diagramas UML}
 

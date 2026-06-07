@@ -1,0 +1,13 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/c:\\Users\\cabar\\Desktop\\Complementos\\Proyecto-de-complementos-\\main.aux": true,
+        "**/c:\\Users\\cabar\\Desktop\\Complementos\\Proyecto-de-complementos-\\main.log": true,
+        "**/c:\\Users\\cabar\\Desktop\\Complementos\\Proyecto-de-complementos-\\main.gz": true,
+        "**/c:\\Users\\cabar\\Desktop\\Complementos\\Proyecto-de-complementos-\\main.out": true
+    }
+}
