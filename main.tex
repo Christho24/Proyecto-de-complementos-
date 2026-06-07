@@ -79,54 +79,121 @@ Camila Romero}
 
 \section{Introducción}%(maico)
 
-El proyecto Finis Trabaja surge como una iniciativa estratégica de la Dirección de Vinculación con el Medio de la Universidad Finis Terrae para centralizar y modernizar el vínculo profesional entre su comunidad estudiantil y el mercado laboral. Históricamente, esta relación ha dependido de mecanismos informales e ineficientes, tales como correos masivos, carteles en los pasillos y grupos de mensajería que no garantizan la llegada efectiva de la información relevante a los interesados. Ante esta problemática, se propone el desarrollo de una plataforma web integral que funcione como un ecosistema digital eficiente para el intercambio de oportunidades, permitiendo que empresas externas y áreas internas de la institución gestionen vacantes de manera estructurada mientras los estudiantes acceden a ofertas alineadas con sus perfiles académicos. La relevancia de esta intervención radica en la creación del Currículum Vitae Virtual (CVV), una herramienta que permite a los alumnos gestionar su identidad profesional, especialidades y preferencias laborales de forma dinámica. El componente más innovador del sistema es su módulo de recomendación automática, el cual cruza datos de las vacantes con los perfiles CVV para identificar grados de compatibilidad basados en la carrera, pretensiones salariales, jornada y modalidad de trabajo, optimizando así la transición de los estudiantes hacia la práctica profesional.
+El proyecto Finis Trabaja surge como una iniciativa impulsada por la Dirección de Vinculación con el Medio de la Universidad Finis Terrae, con el objetivo de modernizar y centralizar la relación entre los estudiantes de la institución y el mundo laboral. Actualmente, la interacción entre estudiantes, empresas externas y áreas internas de la universidad se desarrolla mediante mecanismos informales y descentralizados, tales como correos masivos, carteles físicos y grupos de mensajería instantánea, los cuales no garantizan que la información llegue de manera efectiva a las personas para quienes resulta realmente relevante.
 
+\vspace{0.5cm}
 
-\subsection{Contexto operacional}%(benja)
+En este contexto, surge la necesidad de desarrollar una plataforma web denominada Finis Trabaja, concebida como un entorno digital que permita conectar de forma eficiente a empresas y unidades internas de la universidad con estudiantes que buscan oportunidades laborales alineadas con su perfil académico y profesional. La plataforma permitirá publicar ofertas laborales estructuradas, administrar postulaciones y facilitar la interacción entre los distintos actores involucrados.
 
-La Universidad Finis Terrae se constituye como una institución de educación superior compleja, integrada por diversas facultades y carreras técnicas y profesionales. En este ecosistema académico, la conexión y los flujos de comunicación institucional deben actuar como un puente estratégico fundamental entre el estudiantado y su inserción en el mercado laboral. No obstante, actualmente se identifica que esta comunicación no opera en su totalidad de forma eficiente, encontrándose dispersa y fragmentada, lo que impide que la información crítica alcance a los perfiles que la requieren y compromete el cumplimiento de los objetivos de empleabilidad de la institución.
+\vspace{0.5cm}
+
+Uno de los elementos centrales del sistema corresponde al Currículum Vitae Virtual (CVV), un perfil profesional digital donde cada estudiante podrá registrar información académica, especialidades, áreas de interés, experiencia laboral, preferencias de jornada y modalidad de trabajo, además de adjuntar documentos complementarios, como currículums, certificados o portafolios. Este perfil busca superar las limitaciones de un currículum tradicional, proporcionando información más detallada y útil para los procesos de selección.
+
+\vspace{0.5cm}
+
+Asimismo, el proyecto incorpora un módulo de recomendación automática, el cual permitirá analizar la compatibilidad entre las ofertas laborales publicadas y los perfiles de los estudiantes registrados. Para ello, el sistema considerará factores como la carrera del estudiante, los roles de interés, la pretensión salarial, la disponibilidad horaria y la modalidad de trabajo preferida. De esta forma, la universidad podrá identificar automáticamente qué estudiantes presentan un mayor nivel de afinidad con cada vacante publicada.
+
+\vspace{0.5cm}
+
+La implementación de esta plataforma permitirá mejorar la visibilidad de las oportunidades laborales, optimizar los procesos de difusión y postulación, fortalecer el vínculo entre la universidad y el sector productivo, y contribuir a la inserción laboral de los estudiantes mediante un sistema más organizado, eficiente y alineado con sus capacidades e intereses profesionales.
+
+\vspace{0.5cm}
+
+En consecuencia, el desarrollo del proyecto abordará aspectos fundamentales, tales como el análisis del contexto operacional actual, la definición del propósito y alcance del sistema, la identificación de stakeholders y usuarios, la especificación de requisitos funcionales y no funcionales, el modelado mediante diagramas UML y la definición de la arquitectura de software necesaria para construir una solución web capaz de unificar la gestión de ofertas laborales, postulaciones y recomendaciones automáticas dentro del entorno universitario.
+
+\subsection{Contexto Operacional}
+
+La Universidad Finis Terrae es una institución de educación superior compuesta por múltiples facultades, carreras y estudiantes activos, donde la vinculación entre la comunidad estudiantil y el mundo laboral representa un elemento fundamental para el desarrollo académico y profesional de sus alumnos. Sin embargo, actualmente esta relación se desarrolla mediante procesos informales y poco eficientes, dificultando el acceso oportuno a información relevante tanto para estudiantes como para organizaciones interesadas en incorporar talento universitario.
+
+\vspace{0.3cm}
 
 \subsubsection{Escenario actual y problemática}
 
-Históricamente, la relación entre la oferta de prácticas profesionales o empleos y la demanda estudiantil se ha gestionado a través de medios informales y descentralizados. Estos mecanismos no poseen capacidades de filtrado ni garantizan que la información sea recibida por los perfiles académicos adecuados. Entre las prácticas comunes se encuentra el uso de correos electrónicos masivos, los cuales suelen ser clasificados como spam por los servidores, la fijación de carteles físicos en las dependencias de la universidad y la difusión de vacantes mediante grupos de mensajería instantánea como WhatsApp o Telegram.
+Históricamente, las ofertas laborales y oportunidades de práctica profesional han sido difundidas mediante correos electrónicos masivos, carteles físicos dentro de la universidad y grupos de mensajería instantánea. Estos mecanismos carecen de segmentación y filtrado adecuados, provocando que gran parte de la información no llegue a los estudiantes correctos o sea ignorada por considerarse irrelevante. Como consecuencia, muchos alumnos pierden oportunidades laborales acordes a su perfil académico, mientras que las empresas y áreas internas de la universidad enfrentan dificultades para identificar candidatos compatibles con sus requerimientos.
 
-Esta desorganización informativa genera una saturación de datos irrelevantes para el usuario: es común que a un estudiante le llegue información de áreas ajenas a su competencia, mientras que las ofertas pertinentes no alcanzan su perfil por falta de exposición dirigida. Esta situación no solo limita las opciones de desarrollo del estudiante, sino que genera una percepción de falta de profesionalismo ante las empresas externas interesadas en el talento de la universidad, debilitando el vínculo entre la academia y el sector productivo.
+\vspace{0.3cm}
+
+Esta situación genera múltiples consecuencias negativas. Desde la perspectiva estudiantil, existe pérdida de oportunidades de desarrollo profesional, aumento del tiempo invertido en la búsqueda laboral y dificultades para encontrar ofertas compatibles con sus intereses, disponibilidad y expectativas salariales. Desde la perspectiva de las empresas y áreas internas, se produce una baja eficiencia en los procesos de reclutamiento, una menor visibilidad de las vacantes y una percepción de desorganización institucional. A nivel universitario, esta problemática debilita el vínculo entre la academia y el entorno laboral, afectando los objetivos de empleabilidad y vinculación con el medio.
+
+\vspace{0.3cm}
 
 \subsubsection{Actores en el entorno operativo}
 
-El contexto operativo de la plataforma denominada ``Finis Trabaja'' se centra en la interacción sinérgica de tres grupos de interés, cada uno con necesidades operacionales específicas:
+Dentro del entorno operativo participan principalmente tres grupos de actores:
 
 \begin{itemize}
-    \item \textbf{Estudiantes y Egresados:} Este grupo constituye la base de usuarios postulantes que buscan visibilizar su perfil académico en un mercado laboral altamente competitivo. Ante la actual necesidad de postular de manera manual y reiterativa, surge el concepto de \textit{Currículum Vitae Virtual} (CVV). Este perfil digital no solo centraliza competencias y certificados, sino que permite declarar variables críticas como pretensiones económicas, disponibilidad horaria y preferencia de modalidad (presencial, híbrida o remota), permitiendo descartar automáticamente ofertas que no se ajusten a sus aspiraciones.
-    
-    \item \textbf{Empresas y Áreas Internas de la Universidad:} Representan el sector demandante que requiere un canal formal y estructurado para la publicación y gestión de vacantes. Actualmente, estas entidades dependen de procesos manuales y tediosos para la difusión de ofertas a través de múltiples canales no integrados. El entorno operativo requiere que estas empresas puedan gestionar el ciclo de vida de sus ofertas, detallando con precisión los roles, sueldos, tipos de jornada y modalidades de trabajo.
-    
-    \item \textbf{Administradores:} Actores clave encargados de la gobernanza del sistema. Su rol operativo se centra en la supervisión, validación de empresas que solicitan ingreso al portal y la auditoría de las ofertas publicadas para asegurar que cumplan con los estándares institucionales.
+\item \textbf{Estudiantes:} requieren un sistema que les permita acceder de forma rápida y organizada a ofertas laborales acordes a su carrera, intereses y disponibilidad. Asimismo, necesitan un espacio donde puedan gestionar su perfil profesional y centralizar información relevante para futuras postulaciones.
+
+```
+\vspace{0.2cm}
+
+\item \textbf{Empresas externas y áreas internas de la universidad:} necesitan un canal formal y estructurado para publicar vacantes, administrar postulaciones y acceder a perfiles estudiantiles compatibles con sus requerimientos.
+
+\vspace{0.2cm}
+
+\item \textbf{Administradores del sistema:} serán responsables de supervisar el funcionamiento general de la plataforma, validar organizaciones registradas y garantizar que las ofertas publicadas cumplan con los lineamientos establecidos por la universidad.
+```
+
 \end{itemize}
+
+\vspace{0.3cm}
 
 \subsubsection{Infraestructura y disponibilidad}
 
-La plataforma Finis Trabaja debe operar como un sistema web centralizado, accesible desde internet y utilizable desde computadores y dispositivos móviles. Debe ser compatible con navegadores modernos y permitir la consulta de ofertas, actualización de perfiles y postulaciones en distintos horarios. Aunque en esta etapa no se define integración obligatoria con sistemas institucionales específicos, la solución debe contemplar disponibilidad continua, acceso remoto y mecanismos básicos de respaldo de información.
-\subsection{Propósito del sistema}%(benja)
+La solución propuesta debe operar como una plataforma web centralizada, accesible desde distintos dispositivos y navegadores modernos, permitiendo la consulta de ofertas, la gestión de perfiles y postulaciones de manera remota y continua. Adicionalmente, el sistema debe considerar aspectos relacionados con disponibilidad, almacenamiento seguro de información y control de acceso a los perfiles y documentos de los usuarios.
 
-El proyecto "Finis Trabaja" se crea principalmente para solucionar el desorden que hay hoy en día y lograr una conexión directa entre los alumnos y las oportunidades de trabajo, ya sean de la misma universidad o de empresas de afuera. La idea es que el sistema no sea solo un lugar para colgar anuncios, sino una herramienta que ayude de verdad a que el estudiante encuentre algo que le sirva.
+\vspace{0.3cm}
 
-Para que el sistema funcione y cumpla su objetivo, se enfoca en estos puntos:
+El desarrollo de una solución tecnológica para esta problemática resulta relevante debido al impacto positivo que puede generar en la empleabilidad estudiantil, la eficiencia de los procesos de reclutamiento y la modernización de la relación entre la universidad y el sector laboral. Una plataforma centralizada permitiría reducir la dispersión de información, automatizar procesos y mejorar significativamente la experiencia de todos los actores involucrados.
 
-\begin{enumerate}
-    \item \textbf{Tener todo en un solo lugar:} El propósito es que ya no dependamos de WhatsApp o de correos que nadie lee. Al tener una plataforma oficial, las empresas pueden publicar sus vacantes con todos los detalles (sueldo, horario, si es remoto o no) y los alumnos saben exactamente dónde ir a buscar.
-    
-    \item \textbf{Mejorar el perfil del alumno (CVV):} Queremos que el estudiante pueda mostrar más que un simple papel. Con el Currículum Vitae Virtual, el alumno puede poner qué es lo que realmente le interesa, cuánto quiere ganar y en qué horarios puede trabajar. Así, el sistema ayuda a que no pierda tiempo viendo ofertas que no tienen nada que ver con lo que busca.
-    
-    \item \textbf{Conectar de forma automática:} Lo más importante del software es el módulo de recomendación. El propósito es que el sistema haga el trabajo pesado de revisar quién califica para qué puesto. Así, la universidad puede ver rápido qué alumnos son los mejores para cada oferta según su carrera y lo que ellos mismos pusieron en su perfil.
-    
-    \item \textbf{Dar más visibilidad:} Al final, lo que se busca es que el alumno esté más cerca de conseguir un trabajo que le guste y que las empresas vean el talento que hay en la Finis Terrae de una forma más profesional y organizada.
-\end{enumerate}
+\vspace{0.5cm}
 
-Este software se hace para que conseguir trabajo o práctica sea mucho más fácil y rápido para todos, pasando de un sistema de avisos sueltos a una plataforma que conecta a la gente por sus capacidades e intereses reales.
+\subsection{Propósito del Sistema}
 
+El propósito principal del sistema Finis Trabaja es resolver las deficiencias existentes en la comunicación y gestión de oportunidades laborales entre la comunidad estudiantil de la Universidad Finis Terrae y las organizaciones interesadas en incorporar estudiantes a sus equipos de trabajo.
 
+\vspace{0.3cm}
 
+Actualmente, la difusión de ofertas laborales se realiza mediante medios informales y descentralizados que dificultan el acceso oportuno y eficiente a la información. Frente a esta situación, se busca disponer de una plataforma centralizada que permita gestionar de forma organizada la publicación de vacantes, la creación de perfiles profesionales estudiantiles y los procesos de postulación.
+
+\vspace{0.3cm}
+
+El sistema deberá satisfacer la necesidad de conectar de forma eficiente a estudiantes, empresas externas y áreas internas de la universidad mediante herramientas que permitan:
+
+\begin{itemize}
+\item Publicar y administrar ofertas laborales con información detallada sobre cargos, funciones, sueldo, jornada y modalidad de trabajo.
+
+```
+\vspace{0.2cm}
+
+\item Facilitar la búsqueda y filtrado de ofertas según criterios relevantes para los estudiantes.
+
+\vspace{0.2cm}
+
+\item Permitir la creación y administración de un Currículum Vitae Virtual (CVV) con información académica, experiencia, preferencias laborales y documentos adjuntos.
+
+\vspace{0.2cm}
+
+\item Gestionar postulaciones de manera digital y centralizada.
+
+\vspace{0.2cm}
+
+\item Identificar automáticamente estudiantes compatibles con determinadas vacantes mediante un módulo de recomendación basado en criterios académicos y laborales.
+```
+
+\end{itemize}
+
+\vspace{0.3cm}
+
+Asimismo, el sistema debe considerar aspectos relacionados con seguridad de la información y privacidad de los datos personales de los usuarios. Los estudiantes deberán tener control sobre la visibilidad de sus perfiles y documentos, mientras que el acceso a información sensible deberá encontrarse restringido según el rol de cada usuario dentro de la plataforma. De igual manera, el sistema debe resguardar la integridad y disponibilidad de la información almacenada, considerando mecanismos de autenticación, autorización y control de acceso.
+
+\vspace{0.3cm}
+
+Desde una perspectiva institucional, la universidad espera fortalecer su vínculo con el sector productivo, mejorar los procesos de empleabilidad estudiantil y proporcionar una herramienta moderna que facilite la transición de los alumnos hacia el mundo laboral. Por su parte, las empresas y áreas internas podrán acceder a un entorno más organizado y eficiente para gestionar sus procesos de reclutamiento y selección.
+
+\vspace{0.3cm}
+
+En síntesis, el proyecto consiste en desarrollar una plataforma web denominada Finis Trabaja, destinada a centralizar la gestión de ofertas laborales y postulaciones estudiantiles, incorporando perfiles profesionales digitales y un sistema de recomendación automática que permita conectar estudiantes y vacantes según su nivel de compatibilidad.
 
 \subsubsection{Objetivo general}%(cami)
 \textbf{Objetivo general del proyecto:} Desarrollar una plataforma web que centralice la gestión de oportunidades laborales y facilite la vinculación entre estudiantes, egresados, universidad y entidades oferentes.
