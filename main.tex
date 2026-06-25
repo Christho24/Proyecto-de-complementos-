@@ -6,8 +6,6 @@
 \singlespacing%
 \usepackage{listings}
 \usepackage{xcolor}
-\usepackage{natbib}
-\usepackage{bibentry}
 \usepackage[table]{xcolor}
 \usepackage{tabularx}
 \usepackage{float}
@@ -20,7 +18,6 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{5pt}
 \usepackage{url}
-\nobibliography*
 \definecolor{cabecera}{RGB}{208,226,243}
 \asignatura{Complementos de Ingeniería de Software}
 \titulo{Hito 2}
@@ -575,7 +572,7 @@ En esta sección se presentan los requisitos funcionales identificados para la p
 
 \vspace{5pt}
 
-La lista reducida permite resumir de forma clara las funcionalidades esenciales del sistema antes de pasar a la especificación detallada de cada requisito. En este caso, los requisitos se enfocan en el registro de usuarios, la gestión del Currículum Vitae Virtual, la publicación y búsqueda de ofertas laborales, el proceso de postulación y el módulo de recomendación automática entre ofertas y perfiles estudiantiles.
+La lista reducida permite resumir de forma clara las funcionalidades esenciales del sistema antes de pasar a la especificación detallada de cada requisito. En este caso, los requisitos se enfocan en el registro de usuarios, la gestión del Currículum Vitae Virtual, la publicación y búsqueda de ofertas laborales, el proceso de postulación, la comunicación de su estado al postulante y el módulo de recomendación automática entre ofertas y perfiles estudiantiles.
 
 \vspace{5pt}
 A continuación, se presentan los requisitos funcionales del sistema:
@@ -625,6 +622,9 @@ A continuación, se presentan los requisitos funcionales del sistema:
 
     \item \textbf{RU15. Revisar postulantes} \\
     Permitir que la empresa o área interna acceda al listado de estudiantes que postularon a cada una de sus ofertas y pueda revisar el CVV de cada postulante.
+
+    \item \textbf{RU16. Comunicar el estado de la postulación al postulante} \\
+    Permitir que el sistema informe al estudiante la recepción de su postulación y los cambios de estado asociados al proceso de selección, mediante notificaciones dentro de la plataforma y, de forma complementaria, a través del correo electrónico institucional.
 \end{enumerate}
 
 
@@ -828,6 +828,19 @@ A continuación, se presentan las especificaciones de los requisitos de usuario 
 \end{tabular}
 \end{table}
 
+\begin{table}[H]
+\centering
+\caption{Tabla 3.2-16: Especificaciones del requisito RU16}
+\begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{3cm}|>{\columncolor[HTML]{D9EAF7}}p{3.2cm}|p{5cm}|}
+\hline
+\textbf{ID} & RU16 & \textbf{Nombre corto} & Comunicar estado de postulación \\ \hline
+\textbf{Descripción} & \multicolumn{3}{p{11.2cm}|}{El sistema comunica al estudiante que su postulación fue recibida y le informa cuando se produzcan cambios relevantes en su estado, tales como en revisión, preseleccionada, aceptada o rechazada. La comunicación se presenta dentro de la plataforma y puede complementarse mediante el correo electrónico institucional.} \\ \hline
+\textbf{Entrada (Precondiciones)} & \multicolumn{3}{p{11.2cm}|}{Postulación registrada y asociada a un estudiante y una oferta laboral. Para comunicar un cambio posterior, la empresa o área interna debe haber actualizado el estado de la postulación.} \\ \hline
+\textbf{Salidas (Postcondiciones)} & \multicolumn{3}{p{11.2cm}|}{Notificación generada y disponible para el estudiante con la oferta, fecha y estado actualizado de su postulación; cuando corresponda, se envía además un aviso al correo institucional registrado.} \\ \hline
+\textbf{Prioridad} & \multicolumn{3}{p{11.2cm}|}{Alta} \\ \hline
+\end{tabular}
+\end{table}
+
 \subsection{Matriz de Trazado RU/CU ó HU/CU}%(Chris)
 La matriz de trazado permite relacionar los requisitos de usuario con los casos de uso definidos para la plataforma \textit{Finis Trabaja}. Su objetivo es verificar que cada requisito funcional tenga una representación dentro del comportamiento del sistema y que cada caso de uso responda a una necesidad concreta del proyecto.
 
@@ -852,6 +865,7 @@ Casos de uso definidos:
     \item CU16: Adjuntar carta de presentación
     \item CU17: Revisar postulantes
     \item CU18: Visualizar CVV de postulante
+    \item CU19: Notificar estado de postulación
 \end{itemize}
 
 \begin{table}[H]
@@ -859,24 +873,25 @@ Casos de uso definidos:
 \caption{Matriz de trazado RU/CU}
 \resizebox{\textwidth}{!}{
 \begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}c|
-*{18}{>{\columncolor[HTML]{D9EAF7}}c|}}
+*{19}{>{\columncolor[HTML]{D9EAF7}}c|}}
 \hline
-\textbf{RU/CU} & \textbf{CU01} & \textbf{CU02} & \textbf{CU03} & \textbf{CU04} & \textbf{CU05} & \textbf{CU06} & \textbf{CU07} & \textbf{CU08} & \textbf{CU09} & \textbf{CU10} & \textbf{CU11} & \textbf{CU12} & \textbf{CU13} & \textbf{CU14} & \textbf{CU15} & \textbf{CU16} & \textbf{CU17} & \textbf{CU18} \\ \hline
-\textbf{RU01} & X &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
-\textbf{RU02} &  & X &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
-\textbf{RU03} &  &  & X & X &  &  &  &  &  &  & X & X &  &  & X &  &  & X \\ \hline
-\textbf{RU04} &  &  &  & X & X &  &  &  &  &  & X & X &  &  &  &  &  &  \\ \hline
-\textbf{RU05} &  &  &  &  &  & X & X &  &  &  &  &  &  &  &  &  &  &  \\ \hline
-\textbf{RU06} &  &  &  &  &  &  & X & X & X & X & X & X &  &  &  &  &  &  \\ \hline
-\textbf{RU07} &  &  &  &  &  &  & X & X &  &  &  &  &  &  &  &  &  &  \\ \hline
-\textbf{RU08} &  &  &  &  &  &  &  &  & X &  &  &  &  &  &  &  &  &  \\ \hline
-\textbf{RU09} &  &  &  &  &  &  &  &  & X & X &  &  &  &  &  &  &  &  \\ \hline
-\textbf{RU10} &  &  & X &  &  &  & X &  &  &  & X & X & X &  &  &  &  &  \\ \hline
-\textbf{RU11} &  &  & X &  &  &  & X &  &  &  & X & X &  &  &  &  &  &  \\ \hline
-\textbf{RU12} &  &  &  &  &  &  &  &  &  &  & X & X & X &  &  &  &  &  \\ \hline
-\textbf{RU13} &  &  &  &  &  &  &  &  &  &  &  &  & X & X &  &  &  &  \\ \hline
-\textbf{RU14} &  & X & X &  &  &  &  &  & X &  &  &  &  &  & X & X &  &  \\ \hline
-\textbf{RU15} &  & X &  &  &  &  &  &  &  &  &  &  &  &  &  &  & X & X \\ \hline
+\textbf{RU/CU} & \textbf{CU01} & \textbf{CU02} & \textbf{CU03} & \textbf{CU04} & \textbf{CU05} & \textbf{CU06} & \textbf{CU07} & \textbf{CU08} & \textbf{CU09} & \textbf{CU10} & \textbf{CU11} & \textbf{CU12} & \textbf{CU13} & \textbf{CU14} & \textbf{CU15} & \textbf{CU16} & \textbf{CU17} & \textbf{CU18} & \textbf{CU19} \\ \hline
+\textbf{RU01} & X &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+\textbf{RU02} &  & X &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+\textbf{RU03} &  &  & X & X &  &  &  &  &  &  & X & X &  &  & X &  &  & X &  \\ \hline
+\textbf{RU04} &  &  &  & X & X &  &  &  &  &  & X & X &  &  &  &  &  &  &  \\ \hline
+\textbf{RU05} &  &  &  &  &  & X & X &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+\textbf{RU06} &  &  &  &  &  &  & X & X & X & X & X & X &  &  &  &  &  &  &  \\ \hline
+\textbf{RU07} &  &  &  &  &  &  & X & X &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+\textbf{RU08} &  &  &  &  &  &  &  &  & X &  &  &  &  &  &  &  &  &  &  \\ \hline
+\textbf{RU09} &  &  &  &  &  &  &  &  & X & X &  &  &  &  &  &  &  &  &  \\ \hline
+\textbf{RU10} &  &  & X &  &  &  & X &  &  &  & X & X & X &  &  &  &  &  &  \\ \hline
+\textbf{RU11} &  &  & X &  &  &  & X &  &  &  & X & X &  &  &  &  &  &  &  \\ \hline
+\textbf{RU12} &  &  &  &  &  &  &  &  &  &  & X & X & X &  &  &  &  &  &  \\ \hline
+\textbf{RU13} &  &  &  &  &  &  &  &  &  &  &  &  & X & X &  &  &  &  &  \\ \hline
+\textbf{RU14} &  & X & X &  &  &  &  &  & X &  &  &  &  &  & X & X &  &  & X \\ \hline
+\textbf{RU15} &  & X &  &  &  &  &  &  &  &  &  &  &  &  &  &  & X & X &  \\ \hline
+\textbf{RU16} &  & X &  &  &  &  &  &  &  &  &  &  &  &  & X &  & X &  & X \\ \hline
 \end{tabular}
 }
 \end{table}

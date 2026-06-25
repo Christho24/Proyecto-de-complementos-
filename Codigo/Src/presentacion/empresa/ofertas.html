@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Administración de ofertas laborales de una empresa">
+  <title>Mis ofertas | Finis Trabaja</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='empresa/ofertas.css') }}">
+</head>
+<body data-empresa-id="{{ empresa_id }}">
+  <aside class="sidebar">
+    <a class="logo" href="/" aria-label="Finis Trabaja, volver al inicio"><span>FT</span><b>FINIS<br>TRABAJA</b></a>
+    <nav aria-label="Navegación principal">
+      <a class="activo" href="/empresa"><span>▦</span> Ofertas</a>
+      <a href="/" class="salir"><span>↪</span> Salir</a>
+    </nav>
+    <div class="usuario">
+      <span class="avatar">{{ empresa_iniciales }}</span>
+      <div><strong>{{ empresa.nombre_empresa }}</strong><small>{{ empresa.rubro }}</small></div>
+    </div>
+  </aside>
+
+  <main>
+    <header class="cabecera">
+      <div>
+        <p class="miga">Panel empresa / Ofertas</p>
+        <h1>Ofertas habilitadas</h1>
+        <p>Administra las oportunidades laborales visibles para estudiantes.</p>
+      </div>
+      <button class="boton primario" id="abrir-formulario" type="button"><span>＋</span> Nueva oferta</button>
+    </header>
+
+    <section class="resumen" aria-label="Resumen">
+      <article><span class="indicador rojo">▦</span><div><strong id="total-ofertas">—</strong><small>Ofertas habilitadas</small></div></article>
+      <article><span class="indicador azul">✓</span><div><strong>Publicadas</strong><small>Estado actual</small></div></article>
+      <article><span class="indicador verde">●</span><div><strong id="total-postulantes">—</strong><small>Postulaciones recibidas</small></div></article>
+    </section>
+
+    <section class="contenido">
+      <div class="barra-herramientas">
+        <div>
+          <h2>Listado de ofertas</h2>
+          <p>Revisa tus oportunidades y las postulaciones recibidas.</p>
+        </div>
+        <label class="buscador">
+          <span aria-hidden="true">⌕</span>
+          <input id="buscar" type="search" placeholder="Buscar por cargo o carrera…" autocomplete="off">
+        </label>
+      </div>
+
+      <div id="estado-carga" class="estado">
+        <span class="spinner"></span><p>Cargando ofertas…</p>
+      </div>
+      <div id="lista-ofertas" class="lista" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <dialog id="modal-oferta">
+    <form id="formulario-oferta">
+      <div class="modal-encabezado">
+        <div><span>NUEVA OPORTUNIDAD</span><h2>Publicar oferta laboral</h2></div>
+        <button class="cerrar" type="button" aria-label="Cerrar">×</button>
+      </div>
+      <div class="campos">
+        <label class="campo ancho"><span>Título del puesto *</span><input name="titulo" required maxlength="100" placeholder="Ej. Analista de Datos Junior"></label>
+        <label class="campo ancho"><span>Descripción y funciones *</span><textarea name="descripcion" required maxlength="1200" rows="4" placeholder="Describe las principales responsabilidades…"></textarea></label>
+        <label class="campo ancho"><span>Carrera requerida *</span><input name="carrera" required maxlength="100" placeholder="Ej. Ingeniería Civil Informática"></label>
+        <label class="campo"><span>Sueldo mínimo (CLP) *</span><input name="sueldo_min" type="number" min="0" step="10000" required placeholder="600000"></label>
+        <label class="campo"><span>Sueldo máximo (CLP) *</span><input name="sueldo_max" type="number" min="0" step="10000" required placeholder="900000"></label>
+        <label class="campo"><span>Jornada *</span><select name="jornada" required><option value="">Seleccionar</option><option>Tiempo completo</option><option>Tiempo parcial</option></select></label>
+        <label class="campo"><span>Modalidad *</span><select name="modalidad" required><option value="">Seleccionar</option><option>Presencial</option><option>Remota</option><option>Híbrida</option></select></label>
+        <label class="campo ancho"><span>Ubicación *</span><input name="ubicacion" required maxlength="100" placeholder="Ej. Santiago, Chile"></label>
+      </div>
+      <div class="modal-acciones">
+        <button class="boton secundario cancelar" type="button">Cancelar</button>
+        <button class="boton primario" type="submit">Publicar oferta</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="modal-postulantes">
+    <section>
+      <div class="modal-encabezado">
+        <div><span>POSTULACIONES RECIBIDAS</span><h2 id="titulo-postulantes">Postulantes</h2></div>
+        <button class="cerrar cerrar-postulantes" type="button" aria-label="Cerrar">×</button>
+      </div>
+      <div id="lista-postulantes" class="postulantes"></div>
+      <div class="modal-acciones">
+        <button class="boton secundario cerrar-postulantes" type="button">Cerrar</button>
+      </div>
+    </section>
+  </dialog>
+
+  <div id="notificacion" class="notificacion" role="status" aria-live="polite"></div>
+  <script src="{{ url_for('static', filename='empresa/ofertas.js') }}" defer></script>
+</body>
+</html>

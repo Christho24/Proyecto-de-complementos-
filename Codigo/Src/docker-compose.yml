@@ -1,0 +1,32 @@
+services:
+  mongodb:
+    image: mongo:7
+    container_name: finis-trabaja-mongodb
+    restart: unless-stopped
+    ports:
+      - "18000:27017"
+    volumes:
+      - finis_trabaja_datos:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  web:
+    build: .
+    container_name: finis-trabaja-web
+    restart: unless-stopped
+    environment:
+      MONGO_URI: mongodb://mongodb:27017/
+      MONGO_DB: finis_trabaja
+      EMPRESA_DEMO_ID: empresa_demo_001
+      ESTUDIANTE_DEMO_ID: estudiante_demo_001
+    ports:
+      - "5000:5000"
+    depends_on:
+      mongodb:
+        condition: service_healthy
+
+volumes:
+  finis_trabaja_datos:

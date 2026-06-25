@@ -17,3 +17,9 @@
 *.snm
 *.vrb
 texput.log
+.env
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+Codigo/Src/mongo-data/

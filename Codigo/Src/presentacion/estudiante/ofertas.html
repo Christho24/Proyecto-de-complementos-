@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ofertas laborales disponibles para estudiantes">
+  <title>Oportunidades | Finis Trabaja</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='estudiante/ofertas.css') }}">
+</head>
+<body data-empresa-id="{{ empresa_id }}" data-estudiante-id="{{ estudiante_id }}" data-empresa-nombre="{{ empresa.nombre_empresa }}" data-empresa-iniciales="{{ empresa_iniciales }}">
+  <header class="nav">
+    <a class="logo" href="/"><span>FT</span><b>FINIS TRABAJA</b></a>
+    <nav><a class="activo" href="/estudiante">Oportunidades</a></nav>
+    <div class="perfil"><span>{{ estudiante_iniciales }}</span><div><strong>{{ estudiante.nombre }}</strong><small>{{ perfil.carrera }}</small></div></div>
+    <a class="salir" href="/">Salir</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-contenido">
+        <p class="eyebrow">OPORTUNIDADES PARA TI</p>
+        <h1>Encuentra el próximo paso de tu carrera.</h1>
+        <p>Explora las ofertas habilitadas de {{ empresa.nombre_empresa }}. Al postular, la oportunidad dejará de aparecer en tu listado.</p>
+        <label class="buscador">
+          <span aria-hidden="true">⌕</span>
+          <input id="buscar" type="search" placeholder="Busca por cargo, carrera o modalidad…" autocomplete="off">
+        </label>
+      </div>
+      <div class="hero-grafica" aria-hidden="true"><span>01</span><b>Explora</b><i></i><span>02</span><b>Postula</b><i></i><span>03</span><b>Avanza</b></div>
+    </section>
+
+    <section class="seccion-ofertas">
+      <div class="titulo-listado">
+        <div><h2>Ofertas disponibles</h2><p id="contador">Buscando oportunidades…</p></div>
+        <label>Ordenar por <select id="orden"><option value="recientes">Más recientes</option><option value="sueldo">Mayor sueldo</option><option value="titulo">Nombre A–Z</option></select></label>
+      </div>
+      <div id="estado-carga" class="estado"><span class="spinner"></span><p>Cargando ofertas…</p></div>
+      <div id="lista-ofertas" class="grilla" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <dialog id="modal-postulacion">
+    <form id="formulario-postulacion" enctype="multipart/form-data">
+      <input type="hidden" name="oferta_id">
+      <div class="modal-encabezado">
+        <div><span>POSTULACIÓN</span><h2 id="titulo-modal">Confirmar postulación</h2></div>
+        <button class="cerrar" type="button" aria-label="Cerrar">×</button>
+      </div>
+      <div class="modal-cuerpo">
+        <div class="confirmacion"><span>✓</span><p>Tu PerfilCVV cargado en la plataforma será asociado a esta oferta.</p></div>
+        <label class="archivo-cv">
+          <span>Currículum Vitae en PDF *</span>
+          <input name="curriculum" type="file" accept=".pdf,application/pdf" required>
+          <small>Archivo PDF de hasta 5 MB. La empresa podrá descargarlo.</small>
+        </label>
+        <label><span>Carta de presentación <small>(opcional)</small></span><textarea name="carta_presentacion" maxlength="1500" rows="6" placeholder="Cuéntale brevemente a la empresa por qué te interesa esta oportunidad…"></textarea><small id="caracteres">0 / 1500</small></label>
+      </div>
+      <div class="modal-acciones">
+        <button class="boton secundario cancelar" type="button">Cancelar</button>
+        <button class="boton primario" type="submit">Enviar postulación</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="notificacion" class="notificacion" role="status" aria-live="polite"></div>
+  <script src="{{ url_for('static', filename='estudiante/ofertas.js') }}" defer></script>
+</body>
+</html>

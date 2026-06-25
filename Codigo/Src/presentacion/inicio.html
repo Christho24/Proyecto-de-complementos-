@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finis Trabaja | Demostración</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='inicio.css') }}">
+</head>
+<body>
+  <main class="portada">
+    <section>
+      <span class="marca">FINIS TRABAJA</span>
+      <p class="eyebrow">Prototipo funcional · Universidad Finis Terrae</p>
+      <h1>Oportunidades que conectan talento y futuro.</h1>
+      <p class="bajada">Seleccione una vista para probar los dos flujos implementados en esta entrega.</p>
+      <div class="acciones">
+        <a class="tarjeta" href="/empresa">
+          <span class="icono">E</span>
+          <span><strong>Vista empresa</strong><small>Visualizar y publicar ofertas habilitadas</small></span>
+          <b>→</b>
+        </a>
+        <a class="tarjeta" href="/estudiante">
+          <span class="icono estudiante">U</span>
+          <span><strong>Vista estudiante</strong><small>Explorar oportunidades y postular</small></span>
+          <b>→</b>
+        </a>
+      </div>
+    </section>
+    <aside aria-hidden="true">
+      <div class="circulo circulo-uno"></div>
+      <div class="circulo circulo-dos"></div>
+      <div class="panel">
+        <span>OFERTA DESTACADA</span>
+        <h2>Práctica Ingeniería de Software</h2>
+        <p>Híbrida · Santiago · Tiempo parcial</p>
+        <div class="barra"><i></i></div>
+        <small>Compatibilidad con tu perfil</small>
+      </div>
+    </aside>
+  </main>
+  <script src="{{ url_for('static', filename='inicio.js') }}" defer></script>
+</body>
+</html>
