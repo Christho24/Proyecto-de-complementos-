@@ -298,7 +298,7 @@ El sistema a desarrollar se basa en una arquitectura web, que funcionará con m�
 
 Por lo tanto el sistema debe contar con mecanismos de seguridad para proteger la información personal y garantizar la privacidad de los usuarios. Las leyes de protección de datos vigentes 21719 y 21720, implementan medidas de seguridad como cifrado de datos, autenticación robusta y control de acceso para evitar el uso indebido de la información. (Del Congreso Nacional, s. f.) Lo que ayuda a cumplir con los requisitos de privacidad y seguridad establecidos por la legislación chilena, protegiendo los datos personales de los usuarios.
 
-Para aplicar las leyes 17719 y 21720, el sistema debe implementar mecanismos para que los usuarios puedan ejercer sus derechos de acceso, rectificación, cancelación y oposición (ARCO) sobre sus datos personales. Esto implica proporcionar opciones para que los usuarios puedan actualizar su información, eliminar su cuenta o solicitar la restricción del procesamiento de sus datos en caso de ser necesario. 
+Para aplicar las leyes 27719 y 21720, el sistema debe implementar mecanismos para que los usuarios puedan ejercer sus derechos de acceso, rectificación, cancelación y oposición (ARCO) sobre sus datos personales. Esto implica proporcionar opciones para que los usuarios puedan actualizar su información, eliminar su cuenta o solicitar la restricción del procesamiento de sus datos en caso de ser necesario. 
 
 Por otro lado existen las normas de seguridad de la información en informática, ISO/IEC 27001, que establece un marco de referencia para la gestión de la seguridad de la información. Lo que incluye la implementación de controles de seguridad, la evaluación de riesgos y la mejora continua del sistema de gestión de seguridad de la información (SGSI). (International Organization for Standardization, s. f.). Adicionalmente esta la norma ISO/IEC 25010, que proporciona un marco para la evaluación de la calidad del software, incluyendo aspectos como la funcionalidad, la fiabilidad, la usabilidad, la eficiencia, la mantenibilidad y la portabilidad (International Organization for Standardization, s. f.).
 
@@ -338,18 +338,44 @@ Por otra parte, la validación de empresas podría implicar una mitigación de B
 
 Finalmente ante cualquier falla y en caso de la perduración del proyecto, se podrían establecer procedimientos para la gestión de incidencias y la resolución de problemas, asegurando que cualquier falla sea abordada de manera rápida y eficiente, minimizando el impacto en los usuarios y la plataforma.
 
+
+\subsubsection*{Infraestructura del sistema}
+El sistema se implementará en un entorno de servidor web capaz de gestionar múltiples solicitudes de forma simultánea, incluyendo consultas a la base de datos, procesamiento del módulo de recomendación y transferencia de documentos como currículums y archivos adjuntos a postulaciones. Dado que la Universidad Finis Terrae cuenta con aproximadamente 8.400 estudiantes, y considerando que no todos utilizarán la plataforma de forma simultánea, se estima un escenario de carga concurrente moderada, con picos de actividad en períodos de publicación masiva de ofertas o inicio de semestres académicos.
+
+En cuanto al hardware, el servidor debe cumplir con las siguientes características técnicas mínimas para garantizar un funcionamiento estable y eficiente, esto considerando el número de estudiantes:
+
+\begin{itemize}
+    \item \textbf{Procesador:} CPU de al menos 4 núcleos físicos (idealmente 8 núcleos) con una frecuencia base de 2.5 GHz o superior, así se pueden atender solicitudes concurrentes sin degradación del tiempo de respuesta.
+    \item \textbf{Memoria RAM:} Mínimo 16 GB de RAM para soportar la ejecución del servidor de aplicaciones, el servidor de base de datos y los procesos del módulo de recomendación de forma simultánea.
+    \item \textbf{Almacenamiento:} Disco de estado sólido (SSD) con una capacidad mínima de 500 GB. Esto considerando el volumen de perfiles CVV, ofertas laborales, documentos adjuntos y respaldos periódicos de la base de datos. 
+    \item \textbf{Conectividad:} Interfaz de red de al menos 1 Gbps, con conexión estable a internet y soporte para tráfico HTTPS cifrado.
+    \item \textbf{Disponibilidad:} El servidor debe contar con una fuente de alimentación redundante o encontrarse respaldado por un sistema UPS (\textit{Uninterruptible Power Supply}) para minimizar interrupciones no planificadas y evitar perdidas de datos.
+\end{itemize}
+
+En cuanto al software de infraestructura, el servidor debe contar con un sistema operativo de uso servidor, preferentemente una distribución Linux como Ubuntu Server 22.04 LTS, por su estabilidad y compatibilidad con las tecnologías definidas para el proyecto. 
+
+Adicionalmente, se requiere la configuración de un servidor web como Nginx actuando como proxy inverso, junto con los servicios necesarios para la ejecución del framework y la gestión de la base de datos, además de un certificado SSL/TLS para garantizar la comunicación cifrada conforme a los requisitos legales establecidos anteriormente.
+
+Finalmente, se considera la posibilidad de implementar el sistema bajo un esquema de computación en la nube (\textit{cloud computing}), utilizando proveedores como AWS, Google Cloud o Microsoft Azure. Esta alternativa presenta ventajas en términos de escalabilidad dinámica, alta disponibilidad y reducción de costos de mantención de hardware físico, permitiendo ajustar los recursos de cómputo y almacenamiento en función de la demanda real del sistema. En cualquiera de los dos escenarios —servidor físico o nube— la arquitectura de despliegue debe garantizar la separación lógica entre el servidor de aplicaciones, el servidor web y la base de datos, conforme a la arquitectura multicapa definida para el sistema.
+
+
+
+
+
 \subsection{Relación con Otros Proyectos}%(cami)
 El proyecto Finis Trabaja se relaciona con otros proyectos de desarrollo de plataformas de empleo y vinculación laboral, como LinkedIn, Computrabajo, Indeed y la Bolsa Nacional de Empleo (BNE). Estas plataformas ofrecen servicios similares en términos de publicación de ofertas laborales, gestión de perfiles y recomendaciones, pero Finis Trabaja se diferencia al estar específicamente diseñada para la comunidad académica de la Universidad Finis Terrae, con un enfoque en conectar a estudiantes y egresados con oportunidades laborales relevantes a sus áreas de estudio. Además, el módulo de recomendación automática basado en atributos específicos del perfil académico es una característica distintiva que busca optimizar la conexión entre los usuarios y las ofertas laborales disponibles.
 
-Adicionalmente, desde una perspectiva transaccional o de intercambio de información, el sistema podría relacionarse con sistemas institucionales y administrativos. Tales como, los sistemas académicos o institucionales de la universidad, estos proporcionan información relevante sobre los estudiantes, como la carrera cursada, estado académico (activo o inactivo), datos de contacto y otros antecedentes académicos. Esta información podría utilizarse para la validación de perfiles, del Currículum Vitae Virtual (CVV) y la gestión de usuarios.
+Aun así, en aspectos internos, el sistema no puede relacionarse directamente con plataformas de la universidad Finis Terrae porque no existen proyectos similares a relacionar. Lo más cercano puede ser efinis, una plataforma donde los estudiantes pueden recibir comunicados, además de ver y descargar información de sus cursos, pero no está centrada en una comunicación bidireccional o con información suficiente del estudiantado.
+
+Sin embargo, a pesar de no contar con proyectos institucionales de enlace directo con Finis Trabaja, la plataforma podría relacionarse con sistemas institucionales y administrativos desde una perspectiva transaccional o de intercambio de información. Estos serían sistemas académicos que contengan información relevante sobre los estudiantes, como la carrera cursada, estado académico (activo o inactivo), datos de contacto y otros antecedentes académicos. Esta información podría utilizarse para la validación de perfiles, del Currículum Vitae Virtual (CVV) y la gestión de usuarios.
 
 Además, a futuro, podría evolucionar con la integración de mecanismos de autenticación única (SSO) para los usuarios, permitiendo que los estudiantes inicien sesión en la plataforma utilizando sus credenciales institucionales, lo que simplificaría el acceso y mejoraría la experiencia del usuario al no tener que gestionar múltiples cuentas y contraseñas para diferentes sistemas dentro de la universidad.
 
-Por otra parte, el sistema se relacionaría con servicios de correo electrónico institucional. Esta integración tendría como finalidad enviar notificaciones a los usuarios sobre nuevas ofertas laborales, actualizaciones en sus postulaciones o cambios relevantes en su perfil. Sin embargo, la información principal continuaría centralizada dentro de Finis Trabaja, utilizando el correo únicamente como un mecanismo complementario de comunicación.
+Por otra parte, el proyecto se relacionaría con servicios de correo electrónico institucional. Esta integración tendría como finalidad enviar notificaciones a los usuarios sobre nuevas ofertas laborales, actualizaciones en sus postulaciones o cambios relevantes en su perfil. Sin embargo, la información principal continuaría centralizada dentro de Finis Trabaja, utilizando el correo únicamente como un mecanismo complementario de comunicación.
 
-Otro aspecto a considerar es el almacenamiento de archivos adjuntos, como certificados o documentos relevantes para el perfil del estudiante. En este caso, se podría integrar con servicios de almacenamiento en la nube, para permitir a los usuarios subir y gestionar los documentos de manera segura y accesible desde la plataforma. Esto facilitaría la gestión de archivos pero mantendría la información principal del perfil dentro de Finis Trabaja para el proceso de recomendación y conexión con las ofertas laborales.
+Otro aspecto que considerar es el almacenamiento de archivos adjuntos, como certificados o documentos relevantes para el perfil del estudiante. En este caso, se podría integrar con servicios de almacenamiento en la nube, para permitir a los usuarios subir y gestionar los documentos de manera segura y accesible desde la plataforma. Esto facilitaría la gestión de archivos pero mantendría la información principal del perfil dentro de Finis Trabaja para el proceso de recomendación y conexión con las ofertas laborales.
 
-Finalmente, en conjunto, estas integraciones y relaciones con otros sistemas y servicios institucionales contribuirían a crear un ecosistema digital más cohesivo y eficiente, mejorando la experiencia del usuario y optimizando la gestión de información relevante para la vinculación laboral de los estudiantes y egresados de la Universidad Finis Terrae.
+Finalmente, en conjunto, estas integraciones y relaciones contribuirían a crear un ecosistema digital más cohesivo y eficiente, mejorando la experiencia del usuario y optimizando la gestión de información relevante para la vinculación laboral de los estudiantes y egresados de la Universidad Finis Terrae.
 
 
 \section{Requisitos del sistema}%(cami)
