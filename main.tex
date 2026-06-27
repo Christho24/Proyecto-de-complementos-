@@ -374,26 +374,37 @@ Gobierno de Chile, Ministerio del Trabajo y Previsión Social,
 
 \section{Descripción de la solución}%(benja)
 
-En esta sección se detalla cómo está pensada la plataforma Finis Trabaja para resolver el problema de la búsqueda de empleos y prácticas. Se explican los distintos grupos de personas que participan en el proyecto, qué nivel de acceso tienen y cómo cada uno de ellos se beneficia al usar este sistema en su día a día.
+La plataforma Finis Trabaja no nace simplemente como un requerimiento institucional, sino como una respuesta tecnológica directa a una problemática operativa que nosotros mismos y nuestros compañeros enfrentamos a diario. Actualmente, la búsqueda de prácticas profesionales o primeros empleos depende de canales informales, correos masivos y grupos de mensajería que generan pérdida de información, nula trazabilidad y desconexión con el mercado laboral. 
+
+Nuestra solución plantea el diseño e implementación de una plataforma web multicapa orientada a centralizar, automatizar y optimizar todo el ecosistema de oportunidades laborales de la Universidad Finis Terrae. A través de una arquitectura basada en componentes, el sistema no solo funciona como un repositorio de ofertas, sino que integra de manera activa la administración de perfiles digitales (Currículum Vitae Virtual), la publicación estructurada de vacantes y, como núcleo innovador, un motor de recomendación algorítmica. Esto nos permite pasar de un modelo pasivo de búsqueda a un sistema proactivo que cruza inteligentemente la oferta y la demanda, garantizando la seguridad de la información y entregando métricas reales de empleabilidad a la universidad.
 
 \subsection{Características de los participantes}%(benja)
 
-Para que la plataforma Finis Trabaja funcione bien, es fundamental tener claro quiénes son las personas y grupos que van a participar. Básicamente, hay que separar a los que les interesa que el proyecto resulte y a los que realmente van a usar el sistema en el día a día.
+Para asegurar que la arquitectura de Finis Trabaja resuelva el problema de fondo, es indispensable separar a los actores que tienen un interés estratégico y directivo en el proyecto (stakeholders) de aquellos que interactuarán operacionalmente con las interfaces de la plataforma en el día a día (usuarios).
 
 \subsubsection{Stakeholders}%(benja)
 
-Los stakeholders son los grupos a los que les impacta el proyecto o que tienen un interés en que sea un éxito, más allá de si se meten a usar la página web o no.
+Los stakeholders corresponden a los grupos e individuos en los que recae el impacto del proyecto a nivel institucional, académico y comercial:
 
 \begin{itemize}
-    \item \textbf{Dirección de Vinculación con el Medio:} Son los que pidieron el proyecto. A ellos les interesa ordenar la información y mejorar la cantidad de alumnos que logran conseguir trabajo.
-    \item \textbf{Autoridades de la Universidad Finis Terrae:} Buscan modernizar cómo se hacen las cosas hoy en día en la universidad y mejorar la imagen, conectando mejor a los alumnos con las empresas.
-    \item \textbf{Sector Productivo:} El mercado laboral y las empresas de afuera, que salen ganando al tener un lugar centralizado donde encontrar alumnos capacitados y listos para trabajar.
-    \item \textbf{Equipo de Desarrollo:} Nosotros, los que estamos creando la plataforma. Tenemos que asegurar que el sistema funcione bien, que el módulo recomiende de verdad a los alumnos y entregar el software a tiempo.
+    \item \textbf{Dirección de Vinculación con el Medio:} Representada por su Director(a) y los Coordinadores de Empleabilidad. Son la contraparte principal y quienes levantan la necesidad. Su mayor interés es contar con una herramienta que les permita estandarizar las comunicaciones, dejar de depender de planillas o procesos manuales y, sobre todo, obtener métricas y KPIs consolidados sobre cuántos alumnos realmente logran insertarse en el mercado laboral gracias a la gestión de la universidad.
+    
+    \vspace{0.2cm}
+    
+    \item \textbf{Autoridades de la Universidad Finis Terrae:} Involucra a la Rectoría, Vicerrectoría Académica, Decanos y Directores de Escuela (como en nuestra propia carrera de Ingeniería Civil en Informática y Telecomunicaciones). Buscan la modernización tecnológica de los procesos universitarios y mejorar la percepción de calidad institucional, demostrando un compromiso real, medible y auditable con el futuro profesional de sus estudiantes.
+    
+    \vspace{0.2cm}
+    
+    \item \textbf{Sector Productivo (Mercado Laboral):} Abarca a Gerentes de Recursos Humanos, Analistas de Selección y Jefaturas técnicas de empresas colaboradoras. Su "dolor" actual es recibir cientos de postulaciones desestructuradas que no calzan con el perfil buscado. Se benefician al tener acceso directo a un semillero de talento ya validado académicamente, reduciendo drásticamente sus costos y tiempos de reclutamiento.
+    
+    \vspace{0.2cm}
+    
+    \item \textbf{Equipo de Desarrollo:} Compuesto por nosotros (Christopher, Benjamín, Maico y Camila). Nuestro interés técnico y profesional es aplicar nuestra formación en ingeniería para diseñar una arquitectura de software escalable, lograr que los algoritmos de compatibilidad entreguen recomendaciones de alto valor y asegurar que el sistema final cumpla con los estándares de calidad esperados.
 \end{itemize}
 
 \subsubsection{Usuarios del sistema}%(benja)
 
-Los usuarios son los que van a interactuar directamente con la página web y sus opciones.
+Los usuarios directos, definidos en nuestro modelo de Casos de Uso, interactuarán con módulos específicos según su nivel de privilegios y necesidades:
 
 \begin{table}[H]
 \centering
@@ -401,34 +412,11 @@ Los usuarios son los que van a interactuar directamente con la página web y sus
 \begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}p{4.5cm}|p{10cm}|}
 \hline
 \textbf{Perfil de Usuario} & \textbf{Descripción y Nivel de Acceso} \\ \hline
-\textbf{Estudiantes y Egresados} & Los que buscan práctica o trabajo. Van a entrar para armar su Currículum Vitae Virtual (CVV), poner cuánto quieren ganar y postular a lo que les sirva. \\ \hline
-\textbf{Empresas Externas} & Los que ofrecen el trabajo. Una vez que los validemos, van a poder publicar sus avisos con todos los detalles y revisar a los alumnos que postulen. \\ \hline
-\textbf{Áreas Internas UFT} & Son departamentos de la misma universidad que funcionan igual que una empresa externa, ofreciendo prácticas o pegas adentro de la Finis. \\ \hline
-\textbf{Administradores} & Los que controlan todo. Tienen que revisar si las empresas que se registran son de verdad, ver que las ofertas estén bien y manejar el tema de las recomendaciones. \\ \hline
-\textbf{Visitantes} & Cualquier persona que entre a la página sin hacerse una cuenta. Solo van a poder mirar y filtrar las ofertas laborales que estén públicas, sin poder postular a nada. \\ \hline
-\end{tabular}
-\end{table}
-
-\subsection{Perspectiva del Producto según los Usuarios y Clientes}%(benja)
-
-La plataforma Finis Trabaja se ve distinta dependiendo de quién la use, pero la idea es juntar todas estas necesidades en un solo lugar.
-
-\vspace{5pt}
-
-Para la universidad, que es el cliente principal, este sistema es la solución para acabar con el desorden de los correos masivos y los grupos de WhatsApp. Lo ven como una herramienta oficial para conectar a los alumnos con las empresas de forma más seria y organizada.
-
-\vspace{5pt}
-
-
-Para los estudiantes, sobre todo para los que ya estamos en quinto año de Ingeniería Civil en Informática y Telecomunicaciones buscando dónde hacer la práctica o trabajar, la plataforma se ve como una ayuda gigante. En vez de estar buscando en todas partes y leyendo avisos que nada que ver con lo nuestro, el sistema hace el trabajo pesado: revisa tu CVV, cruza los datos y te recomienda ofertas que de verdad calcen con lo que sabes hacer, tu horario y cuánto quieres ganar.
-
-\vspace{5pt}
-
-
-Por último, para las empresas, esto es un filtro automático. Ven la plataforma como una forma de ahorrarse el tiempo de leer currículums que no les sirven, recibiendo directo una lista de los mejores candidatos ya pre-evaluados por la universidad.
-
-
-\subsection{Ambiente Operacional de la Solución}%(cami)
+\textbf{Estudiantes y Egresados} & Son el motor de la plataforma. Ingresan al sistema para construir su Currículum Vitae Virtual (CVV), donde detallan su nivel de avance, conocimientos técnicos, disponibilidad horaria y pretensiones salariales. Tienen acceso para buscar, filtrar y postular con un solo clic a las ofertas que el sistema les sugiere según su porcentaje de compatibilidad. \\ \hline
+\textbf{Empresas Externas} & Son las entidades que inyectan oportunidades al sistema. Tras pasar por una validación estricta de seguridad, acceden a un panel de control donde publican vacantes estructuradas, adjuntan documentación y administran el flujo de postulantes, visualizando en detalle los CVV de los candidatos recomendados. \\ \hline
+\textbf{Áreas Internas UFT} & Unidades como laboratorios, centros de investigación o direcciones de la propia universidad. Operan en el sistema con la misma lógica que una empresa externa, publicando oportunidades de ayudantías, prácticas internas o trabajos exclusivos para la comunidad Finis Terrae. \\ \hline
+\textbf{Administradores} & Personal encargado de la gobernanza transaccional de la plataforma. Tienen control total para auditar el registro de empresas (evitando ofertas informales), moderar el contenido de las vacantes publicadas, supervisar el correcto funcionamiento del motor de recomendaciones y extraer reportes de la base de datos. \\ \hline
+\textbf{Visitantes} & Usuarios anónimos que llegan a la plataforma. Poseen un acceso limitado de solo lectura que les permite explorar el catálogo de ofertas públicas como un "gancho" para registrarse, pero el sistema les bloquea a\subsection{Ambiente Operacional de la Solución}%(cami)
 
 
 \subsection{Relación con Otros Proyectos}%(cami)
