@@ -6,7 +6,7 @@
 \singlespacing%
 \usepackage{listings}
 \usepackage{xcolor}
-\usepackage{natbib}
+\usepackage[numbers]{natbib}
 \usepackage{bibentry}
 \usepackage[table]{xcolor}
 \usepackage{tabularx}
@@ -23,7 +23,7 @@
 \nobibliography*
 \definecolor{cabecera}{RGB}{208,226,243}
 \asignatura{Complementos de Ingeniería de Software}
-\titulo{Hito 1}
+\titulo{Hito 2}
 \prof{Daniel Moreno}
 \alumnos{Christopher Abarca\\
 Benjammin Echeverria\\
@@ -34,6 +34,7 @@ Camila Romero}
 \portada%
 
 \section*{Información preliminar}
+En este apartado está el equipo de desarrollo, la contraparte y la historia de versiones del proyecto.
 
 
 \subsection*{Equipo de Desarrollo}
@@ -72,6 +73,10 @@ Camila Romero}
 
 \tableofcontents
 \listoftables
+
+\newpage
+
+\listoffigures
 \newpage
 
 \section{Introducción}%(maico)
@@ -266,11 +271,11 @@ Mercado laboral: Conjunto de oportunidades de empleo disponibles para los estudi
 
 \vspace{5pt}
 
-Desentralizado: Sistema o proceso que no está centralizado, es decir, que no tiene un punto único de control o gestión.
+Descentralizado: Sistema o proceso que no está centralizado, es decir, que no tiene un punto único de control o gestión.
 
 \vspace{5pt}
 
-Perfil academico: Conjunto de información que describe la formación académica, habilidades y experiencia de un estudiante o egresado.
+Perfil académico: Conjunto de información que describe la formación académica, habilidades y experiencia de un estudiante o egresado.
 
 
 \vspace{5pt}
@@ -283,7 +288,7 @@ Usuario: Persona que interactúa con la plataforma, ya sea como estudiante, empr
 
 \vspace{5pt}
 
-CVV: Currículum Vitae, documento que resume la formación académica, experiencia laboral y habilidades de una persona.
+CVV: Currículum Vitae Virtual, documento que resume la formación académica, experiencia laboral y habilidades de una persona.
 
 \vspace{5pt}
 
@@ -323,7 +328,7 @@ Software: Conjunto de programas, datos y documentación que forman parte del sis
 
 \vspace{5pt}
 
-Modulos: Componentes o partes del sistema que cumplen funciones específicas, como la gestión de perfiles, publicación de ofertas laborales, filtrado de información y recomendación de oportunidades.
+Módulos: Componentes o partes del sistema que cumplen funciones específicas, como la gestión de perfiles, publicación de ofertas laborales, filtrado de información y recomendación de oportunidades.
 
 \vspace{5pt}
 
@@ -367,6 +372,23 @@ Gobierno de Chile, Ministerio del Trabajo y Previsión Social,
 [En línea]. Disponible en: \url{https://www.bne.cl}.
 [Accedido: 12 abr. 2026].
 
+\bibitem{bcn}
+Del Congreso Nacional, B. (s. f.).
+\textit{Biblioteca del Congreso Nacional}.
+www.bcn.cl/leychile.
+[En línea]. Disponible en: \url{https://www.bcn.cl/leychile/navegar?idNorma=141599}.
+
+\bibitem{ionos}
+¿Qué es el backend? Definición y explicación. (2024, 7 junio).
+\textit{Ionos Digital Guide}.
+[En línea]. Disponible en: \url{https://www.ionos.com/es-us/digitalguide/paginas-web/creacion-de-paginas-web/que-es-el-backend/}.
+
+\bibitem{aws}
+Amazon Web Services. (s. f.).
+\textit{¿Cuál es la diferencia entre el front end y back end en el desarrollo de aplicaciones?}
+Amazon Web Services, Inc.
+[En línea]. Disponible en: \url{https://aws.amazon.com/es/compare/the-difference-between-frontend-and-backend/}.
+
 
 
 \end{thebibliography}
@@ -386,6 +408,7 @@ Para asegurar que la arquitectura de Finis Trabaja resuelva el problema de fondo
 
 Los stakeholders corresponden a los grupos e individuos en los que recae el impacto del proyecto a nivel institucional, académico y comercial:
 
+<<<<<<< HEAD
 \begin{itemize}
     \item \textbf{Dirección de Vinculación con el Medio:} Representada por su Director(a) y los Coordinadores de Empleabilidad. Son la contraparte principal y quienes levantan la necesidad. Su mayor interés es contar con una herramienta que les permita estandarizar las comunicaciones, dejar de depender de planillas o procesos manuales y, sobre todo, obtener métricas y KPIs consolidados sobre cuántos alumnos realmente logran insertarse en el mercado laboral gracias a la gestión de la universidad.
     
@@ -401,6 +424,23 @@ Los stakeholders corresponden a los grupos e individuos en los que recae el impa
     
     \item \textbf{Equipo de Desarrollo:} Compuesto por nosotros (Christopher, Benjamín, Maico y Camila). Nuestro interés técnico y profesional es aplicar nuestra formación en ingeniería para diseñar una arquitectura de software escalable, lograr que los algoritmos de compatibilidad entreguen recomendaciones de alto valor y asegurar que el sistema final cumpla con los estándares de calidad esperados.
 \end{itemize}
+=======
+\begin{table}[H]
+\centering
+\caption{Stakeholders del proyecto}
+\begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}p{1.2cm}|p{4cm}|p{6cm}|p{2.3cm}|}
+\hline
+\textbf{ID} & \textbf{Cargo} & \textbf{Descripción} & \textbf{Influencia} \\ \hline
+SH1 & Dirección de Vinculación con el Medio & Son los que pidieron el proyecto. Les interesa ordenar la información y mejorar la cantidad de alumnos que logran conseguir trabajo. & Alta \\ \hline
+SH2 & Autoridades de la Universidad Finis Terrae & Buscan modernizar cómo se hacen las cosas hoy en día en la universidad y mejorar la imagen, conectando mejor a los alumnos con las empresas. & Alta \\ \hline
+SH3 & Sector Productivo & El mercado laboral y las empresas de afuera, que salen ganando al tener un lugar centralizado donde encontrar alumnos capacitados y listos para trabajar. & Media \\ \hline
+SH4 & Equipo de Desarrollo & Los que están creando la plataforma. Tienen que asegurar que el sistema funcione bien, que el módulo recomiende de verdad a los alumnos y entregar el software a tiempo. & Alta \\ \hline
+\end{tabular}
+\end{table}
+
+
+\newpage
+>>>>>>> c88184529ceceb2395ad77790dd2684e059e33ea
 
 \subsubsection{Usuarios del sistema}%(benja)
 
@@ -409,17 +449,183 @@ Los usuarios directos, definidos en nuestro modelo de Casos de Uso, interactuar�
 \begin{table}[H]
 \centering
 \caption{Usuarios del sistema y niveles de acceso}
-\begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}p{4.5cm}|p{10cm}|}
+\begin{tabular}{|>{\columncolor[HTML]{D9EAF7}}p{1.2cm}|p{3.5cm}|p{6.5cm}|p{2.3cm}|}
 \hline
+<<<<<<< HEAD
 \textbf{Perfil de Usuario} & \textbf{Descripción y Nivel de Acceso} \\ \hline
 \textbf{Estudiantes y Egresados} & Son el motor de la plataforma. Ingresan al sistema para construir su Currículum Vitae Virtual (CVV), donde detallan su nivel de avance, conocimientos técnicos, disponibilidad horaria y pretensiones salariales. Tienen acceso para buscar, filtrar y postular con un solo clic a las ofertas que el sistema les sugiere según su porcentaje de compatibilidad. \\ \hline
 \textbf{Empresas Externas} & Son las entidades que inyectan oportunidades al sistema. Tras pasar por una validación estricta de seguridad, acceden a un panel de control donde publican vacantes estructuradas, adjuntan documentación y administran el flujo de postulantes, visualizando en detalle los CVV de los candidatos recomendados. \\ \hline
 \textbf{Áreas Internas UFT} & Unidades como laboratorios, centros de investigación o direcciones de la propia universidad. Operan en el sistema con la misma lógica que una empresa externa, publicando oportunidades de ayudantías, prácticas internas o trabajos exclusivos para la comunidad Finis Terrae. \\ \hline
 \textbf{Administradores} & Personal encargado de la gobernanza transaccional de la plataforma. Tienen control total para auditar el registro de empresas (evitando ofertas informales), moderar el contenido de las vacantes publicadas, supervisar el correcto funcionamiento del motor de recomendaciones y extraer reportes de la base de datos. \\ \hline
 \textbf{Visitantes} & Usuarios anónimos que llegan a la plataforma. Poseen un acceso limitado de solo lectura que les permite explorar el catálogo de ofertas públicas como un "gancho" para registrarse, pero el sistema les bloquea a\subsection{Ambiente Operacional de la Solución}%(cami)
+=======
+\textbf{ID} & \textbf{Rol} & \textbf{Descripción y Nivel de Acceso} & \textbf{Influencia} \\ \hline
+U1 & Estudiantes y Egresados & Los que buscan práctica o trabajo. Van a entrar para armar su Currículum Vitae Virtual (CVV), poner cuánto quieren ganar y postular a lo que les sirva. & Alta \\ \hline
+U2 & Empresas Externas & Los que ofrecen el trabajo. Una vez que los validemos, van a poder publicar sus avisos con todos los detalles y revisar a los alumnos que postulen. & Alta \\ \hline
+U3 & Áreas Internas UFT & Son departamentos de la misma universidad que funcionan igual que una empresa externa, ofreciendo prácticas o pegas adentro de la Finis. & Media \\ \hline
+U4 & Administradores & Los que controlan todo. Tienen que revisar si las empresas que se registran son de verdad, ver que las ofertas estén bien y manejar el tema de las recomendaciones. & Alta \\ \hline
+U5 & Visitantes & Cualquier persona que entre a la página sin hacerse una cuenta. Solo van a poder mirar y filtrar las ofertas laborales que estén públicas, sin poder postular a nada. & Baja \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Perspectiva del Producto según los Usuarios y Clientes}%(benja)
+
+La plataforma Finis Trabaja se ve distinta dependiendo de quién la use, pero la idea es juntar todas estas necesidades en un solo lugar.
+
+\vspace{5pt}
+
+Para la universidad, que es el cliente principal, este sistema es la solución para acabar con el desorden de los correos masivos y los grupos de WhatsApp. Lo ven como una herramienta oficial para conectar a los alumnos con las empresas de forma más seria y organizada.
+
+\vspace{5pt}
+
+
+Para los estudiantes, sobre todo para los que ya estan en quinto año de Ingeniería Civil en Informática y Telecomunicaciones que buscan dónde hacer la práctica o trabajar, la plataforma se ve como una ayuda gigante. En vez de estar buscando en todas partes y leyendo avisos que nada que ver con lo nuestro, el sistema hace el trabajo pesado: revisa tu CVV, cruza los datos y te recomienda ofertas que de verdad calcen con lo que sabes hacer, tu horario y cuánto quieres ganar.
+
+\vspace{5pt}
+
+
+Por último, para las empresas, esto es un filtro automático. Ven la plataforma como una forma de ahorrarse el tiempo de leer currículums que no les sirven, recibiendo directo una lista de los mejores candidatos ya pre-evaluados por la universidad.
+
+
+\subsection{Ambiente Operacional de la Solución}%(cami)
+\subsubsection*{Estándares}
+El sistema a desarrollar se basa en una arquitectura web, que funcionará con módulos específicos para la gestión de perfiles de estudiantes (CVV), publicación de ofertas laborales por parte de empresas, filtrado de información y un sistema de recomendación que cruce datos entre vacantes y perfiles.
+
+\vspace{5pt}
+
+Por lo tanto, el sistema debe contar con mecanismos de seguridad para proteger la información personal y garantizar la privacidad de los usuarios. Las leyes de protección de datos vigentes 21719 y 21720, implementan medidas de seguridad como cifrado de datos, autenticación robusta y control de acceso para evitar el uso indebido de la información. (Del Congreso Nacional, s. f.) Lo que ayuda a cumplir con los requisitos de privacidad y seguridad establecidos por la legislación chilena, protegiendo los datos personales de los usuarios.
+
+\vspace{5pt}
+
+Para aplicar las leyes 17719 y 21720, el sistema debe implementar mecanismos para que los usuarios puedan ejercer sus derechos de acceso, rectificación, cancelación y oposición (ARCO) sobre sus datos personales. Esto implica proporcionar opciones para que los usuarios puedan actualizar su información, eliminar su cuenta o solicitar la restricción del procesamiento de sus datos en caso de ser necesario. 
+
+\vspace{5pt}
+
+Por otro lado, existen las normas de seguridad de la información en informática, ISO/IEC 27001, que establece un marco de referencia para la gestión de la seguridad de la información. Lo que incluye la implementación de controles de seguridad, la evaluación de riesgos y la mejora continua del sistema de gestión de seguridad de la información (SGSI). (International Organization for Standardization, s. f.). Adicionalmente, está la norma ISO/IEC 25010, que proporciona un marco para la evaluación de la calidad del software, incluyendo aspectos como la funcionalidad, la fiabilidad, la usabilidad, la eficiencia, la mantenibilidad y la portabilidad (International Organization for Standardization, s. f.).
+
+\vspace{5pt}
+
+Estas normas se pueden aplicar en el desarrollo del sistema a través de controles de seguridad, pruebas de calidad y evaluación del software para garantizar que cumpla con los estándares de seguridad y calidad establecidos por la industria.
+
+\vspace{5pt}
+
+Considerando los aspectos de seguridad, calidad y protección de datos mencionados anteriormente, es necesario definir una base tecnológica que permita implementar estos requerimientos dentro de la solución propuesta.
+
+\subsubsection*{Tecnología}
+En el ámbito tecnológico, el proyecto se desarrollará en base al lenguaje de programación de python. Por lo tanto, el desarrollo web se realizará utilizando frameworks de python como Django o Flask, que permiten la creación de aplicaciones web robustas y escalables. En este caso Django, un framework de alto nivel que sigue el patrón de diseño Modelo-Vista-Controlador (MVC) y proporciona una estructura sólida para el desarrollo de aplicaciones web, es elegido para el proyecto debido a la magnitud del mismo y las necesidades estipuladas en los requisitos. (¿Qué Es el Backend? Definición y Explicación, 2024)
+
+\vspace{5pt}
+
+Para el desarrollo del frontend se aplicarán lenguajes de programación como HTML, CSS y JavaScript, comúnmente utilizados en desarrollo web, para crear la interfaz de usuario y la experiencia del mismo. En cambio, el backend se encargará de la lógica de negocio, la gestión de datos y la comunicación con la base de datos, este se realizará con el lenguaje de codificación de python. (Amazon Web Services, s. f.)
+
+\vspace{5pt}
+
+Finalmente, la base de datos se diseñará utilizando un modelo relacional, que permite organizar los datos en tablas relacionadas entre sí, facilitando la gestión y consulta de la información. Este modelo es adecuado para el tipo de datos que se manejarán en el sistema, como perfiles de estudiantes, ofertas laborales y postulaciones. Como base de datos específica se tiene en cuenta PostgreSQL, que es un sistema de gestión de bases de datos relacional de código abierto o MySQL, que es otro sistema de gestión de bases de datos relacional de código abierto, ambos conocidos por su rendimiento y fiabilidad.
+
+\vspace{5pt}
+
+Sobre esta infraestructura tecnológica se desarrollará el módulo de recomendación, el cual corresponde a una de las funcionalidades principales del sistema debido a su capacidad para relacionar automáticamente las vacantes disponibles con los perfiles de los estudiantes registrados.
+
+\subsubsection*{Sistema de recomendaciones}
+El módulo de recomendación calcula un índice de compatibilidad entre cada oferta publicada y los perfiles de los estudiantes registrados. Este índice se basa en la comparación de atributos clave, como la carrera del estudiante, sus pretensiones salariales, su disponibilidad horaria y su preferencia de modalidad de trabajo (presencial, híbrida o remota). El sistema asigna un peso a cada uno de estos atributos para reflejar su importancia relativa en el proceso de selección. Por ejemplo, la carrera puede tener un peso del 40\%, las pretensiones salariales un 30\%, la disponibilidad horaria un 20\% y la modalidad de trabajo un 10\%.
+
+\vspace{5pt}
+
+El algoritmo funciona aplicando una fórmula de compatibilidad que combina los pesos asignados a cada atributo con la coincidencia entre los datos de la oferta y el perfil del estudiante. Por ejemplo, si un estudiante tiene una carrera que coincide con la oferta, se suma el peso correspondiente a esa coincidencia. Si las pretensiones salariales del estudiante están dentro del rango ofrecido por la empresa, se suma el peso de esa coincidencia, y así sucesivamente para cada atributo. El resultado final es un índice de compatibilidad que se utiliza para ordenar las recomendaciones en función de su relevancia. Esta lista se actualiza dinámicamente a medida que se publican nuevas ofertas o se actualizan los perfiles, asegurando que las recomendaciones sean siempre relevantes y oportunas.
+
+\vspace{5pt}
+
+Para que este módulo funcione de manera integrada con el resto de las funcionalidades de la plataforma, es necesario definir una arquitectura de software que permita organizar adecuadamente los distintos componentes del sistema y asegurar su correcto funcionamiento.
+
+\vspace{5pt}
+
+\subsubsection*{Arquitectura y Modelo de calidad}
+El sistema se diseñará utilizando una arquitectura multicapa que permita separar la presentación, la lógica de negocio, el acceso a datos y la persistencia de información en componentes independientes. Esta arquitectura facilita el mantenimiento y la escalabilidad del sistema, permitiendo que cada componente pueda ser desarrollado y modificado de forma independiente sin afectar a los demás.
+
+\vspace{5pt}
+
+En cuanto al modelo de calidad, se aplicará el modelo FURPS+ para la etapa de análisis de requisitos, debido a que ayuda a clasificar y comprender cómo afectan los requisitos del sistema en la funcionalidad, usabilidad, confiabilidad, rendimiento y soporte del sistema. Además se aplicará el modelo ISO/IEC 25010 para el plan de pruebas, esto porque proporciona un marco para evaluar la calidad del software en términos de seguridad, fiabilidad, capacidad de interacción del usuario con el sistema y las funcionalidades, fundamental para garantizar que el sistema cumpla con los estándares de calidad establecidos por la industria y para los usuarios.
+
+\vspace{5pt}
+
+Una vez definidos los aspectos relacionados con la arquitectura y la calidad del software, también es importante considerar las estrategias de mantenimiento y soporte necesarias para asegurar la continuidad operativa del sistema y su correcto funcionamiento a largo plazo.
+
+\subsubsection*{Mantenimiento y Soporte}
+Es importante tener algunos aspectos en consideración como que el módulo de recomendación es el componente más expuesto a fallas de tipo Crash y Algoritmos, porque cruza múltiples tablas y aplica lógica de compatibilidad, lo que puede generar errores si los datos no están bien estructurados o si hay inconsistencias en la información. Por lo tanto, se consideraría implementar mecanismos de monitoreo y alertas para detectar cualquier anomalía en el funcionamiento del módulo de recomendación, así como pruebas unitarias exhaustivas para garantizar estabilidad y rendimiento. Además, a largo plazo y si el proyecto se lleva a cabo en la realidad como sistema institucional, habría que implementar un plan de mantenimiento que incluya actualizaciones regulares del sistema, revisión de la base de datos y optimización del código para asegurar que el sistema funcione de manera eficiente y sin interrupciones a lo largo del tiempo.
+
+\vspace{5pt}
+
+También se pueden generar fallas de recuperación, esto debido al proceso de postulación, el cual involucra múltiples pasos y puede ser propenso a errores si no se manejan adecuadamente las transacciones y la gestión de datos. Para mitigar este riesgo, se podrían implementar mecanismos de recuperación automática en caso de fallas durante el proceso de postulación, como la capacidad de reintentar la operación o restaurar el estado anterior en caso de errores críticos.
+
+\vspace{5pt}
+
+Por otra parte, la validación de empresas podría implicar una mitigación de Byzantine, el riesgo se debe a que una empresa malintencionada o con información falsa podría intentar ingresar al sistema, lo que podría comprometer la integridad de la plataforma y la confianza de los usuarios. Para mitigar este riesgo, se podrían implementar medidas de validación rigurosas para las empresas que solicitan ingreso al portal, como la verificación de su identidad y la validación de su información antes de permitir publicar ofertas laborales en la plataforma. 
+
+\vspace{5pt}
+
+Finalmente, ante cualquier falla y en caso de la perduración del proyecto, se podrían establecer procedimientos para la gestión de incidencias y la resolución de problemas, asegurando que cualquier falla sea abordada de manera rápida y eficiente, minimizando el impacto en los usuarios y la plataforma.
+
+\vspace{5pt}
+
+\subsubsection*{Infraestructura del sistema}
+El sistema se implementará en un entorno de servidor web capaz de gestionar múltiples solicitudes de forma simultánea, incluyendo consultas a la base de datos, procesamiento del módulo de recomendación y transferencia de documentos como currículums y archivos adjuntos a postulaciones. Dado que la Universidad Finis Terrae cuenta con aproximadamente 8.400 estudiantes, y considerando que no todos utilizarán la plataforma de forma simultánea, se estima un escenario de carga concurrente moderada, con picos de actividad en períodos de publicación masiva de ofertas o inicio de semestres académicos.
+
+\vspace{5pt}
+
+En cuanto al hardware, el servidor debe cumplir con las siguientes características técnicas mínimas para garantizar un funcionamiento estable y eficiente, esto considerando el número de estudiantes:
+
+\vspace{5pt}
+
+\begin{itemize}
+    \item \textbf{Procesador:} CPU de al menos 4 núcleos físicos (idealmente 8 núcleos) con una frecuencia base de 2.5 GHz o superior, así se pueden atender solicitudes concurrentes sin degradación del tiempo de respuesta.
+    \item \textbf{Memoria RAM:} Mínimo 16 GB de RAM para soportar la ejecución del servidor de aplicaciones, el servidor de base de datos y los procesos del módulo de recomendación de forma simultánea.
+    \item \textbf{Almacenamiento:} Disco de estado sólido (SSD) con una capacidad mínima de 500 GB. Esto considerando el volumen de perfiles CVV, ofertas laborales, documentos adjuntos y respaldos periódicos de la base de datos. 
+    \item \textbf{Conectividad:} Interfaz de red de al menos 1 Gbps, con conexión estable a internet y soporte para tráfico HTTPS cifrado.
+    \item \textbf{Disponibilidad:} El servidor debe contar con una fuente de alimentación redundante o encontrarse respaldado por un sistema UPS (\textit{Uninterruptible Power Supply}) para minimizar interrupciones no planificadas y evitar perdidas de datos.
+\end{itemize}
+
+\vspace{5pt}
+
+En cuanto al software de infraestructura, el servidor debe contar con un sistema operativo de uso servidor, preferentemente una distribución Linux como Ubuntu Server 22.04 LTS, por su estabilidad y compatibilidad con las tecnologías definidas para el proyecto. 
+
+\vspace{5pt}
+
+Adicionalmente, se requiere la configuración de un servidor web como Nginx actuando como proxy inverso, junto con los servicios necesarios para la ejecución del framework y la gestión de la base de datos, además de un certificado SSL/TLS para garantizar la comunicación cifrada conforme a los requisitos legales establecidos anteriormente.
+
+\vspace{5pt}
+
+Finalmente, se considera la posibilidad de implementar el sistema bajo un esquema de computación en la nube (\textit{cloud computing}), utilizando proveedores como AWS, Google Cloud o Microsoft Azure. Esta alternativa presenta ventajas en términos de escalabilidad dinámica, alta disponibilidad y reducción de costos de mantención de hardware físico, permitiendo ajustar los recursos de cómputo y almacenamiento en función de la demanda real del sistema. En cualquiera de los dos escenarios —servidor físico o nube— la arquitectura de despliegue debe garantizar la separación lógica entre el servidor de aplicaciones, el servidor web y la base de datos, conforme a la arquitectura multicapa definida para el sistema.
+
+
+>>>>>>> c88184529ceceb2395ad77790dd2684e059e33ea
 
 
 \subsection{Relación con Otros Proyectos}%(cami)
+El proyecto Finis Trabaja se relaciona con otros proyectos de desarrollo de plataformas de empleo y vinculación laboral, como LinkedIn, Computrabajo, Indeed y la Bolsa Nacional de Empleo (BNE). Estas plataformas ofrecen servicios similares en términos de publicación de ofertas laborales, gestión de perfiles y recomendaciones, pero Finis Trabaja se diferencia al estar específicamente diseñada para la comunidad académica de la Universidad Finis Terrae, con un enfoque en conectar a estudiantes y egresados con oportunidades laborales relevantes a sus áreas de estudio. Además, el módulo de recomendación automática basado en atributos específicos del perfil académico es una característica distintiva que busca optimizar la conexión entre los usuarios y las ofertas laborales disponibles.
+
+\vspace{5pt}
+
+Aun así, en aspectos internos, el sistema no puede relacionarse directamente con plataformas de la universidad Finis Terrae porque no existen proyectos similares a relacionar. Lo más cercano puede ser efinis, una plataforma donde los estudiantes pueden recibir comunicados, además de ver y descargar información de sus cursos, pero no está centrada en una comunicación bidireccional o con información suficiente del estudiantado.
+
+\vspace{5pt}
+
+Sin embargo, a pesar de no contar con proyectos institucionales de enlace directo con Finis Trabaja, la plataforma podría relacionarse con sistemas institucionales y administrativos desde una perspectiva transaccional o de intercambio de información. Estos serían sistemas académicos que contengan información relevante sobre los estudiantes, como la carrera cursada, estado académico (activo o inactivo), datos de contacto y otros antecedentes académicos. Esta información podría utilizarse para la validación de perfiles, del Currículum Vitae Virtual (CVV) y la gestión de usuarios.
+
+\vspace{5pt}
+
+Además, a futuro, podría evolucionar con la integración de mecanismos de autenticación única (SSO) para los usuarios, permitiendo que los estudiantes inicien sesión en la plataforma utilizando sus credenciales institucionales, lo que simplificaría el acceso y mejoraría la experiencia del usuario al no tener que gestionar múltiples cuentas y contraseñas para diferentes sistemas dentro de la universidad.
+
+\vspace{5pt}
+
+Por otra parte, el proyecto se relacionaría con servicios de correo electrónico institucional. Esta integración tendría como finalidad enviar notificaciones a los usuarios sobre nuevas ofertas laborales, actualizaciones en sus postulaciones o cambios relevantes en su perfil. Sin embargo, la información principal continuaría centralizada dentro de Finis Trabaja, utilizando el correo únicamente como un mecanismo complementario de comunicación.
+
+\vspace{5pt}
+
+Otro aspecto que considerar es el almacenamiento de archivos adjuntos, como certificados o documentos relevantes para el perfil del estudiante. En este caso, se podría integrar con servicios de almacenamiento en la nube, para permitir a los usuarios subir y gestionar los documentos de manera segura y accesible desde la plataforma. Esto facilitaría la gestión de archivos pero mantendría la información principal del perfil dentro de Finis Trabaja para el proceso de recomendación y conexión con las ofertas laborales.
+
+\vspace{5pt}
+
+Finalmente, en conjunto, estas integraciones y relaciones contribuirían a crear un ecosistema digital más cohesivo y eficiente, mejorando la experiencia del usuario y optimizando la gestión de información relevante para la vinculación laboral de los estudiantes y egresados de la Universidad Finis Terrae.
 
 
 
@@ -486,6 +692,7 @@ A continuación, se presentan los requisitos funcionales del sistema:
 \end{enumerate}
 
 
+\newpage
 
 \subsection{Especificación de Requisitos}
 
@@ -746,7 +953,11 @@ En esta sección se presentan los distintos diagramas UML desarrollados para rep
 
 El diagrama de casos de uso representa las principales interacciones entre los actores del sistema y las funcionalidades disponibles dentro de la plataforma Finis Trabaja. Entre los actores identificados se encuentran estudiantes, visitantes, administradores, empresas externas y áreas internas de la universidad.
 
+\vspace{5pt}
+
 Las funcionalidades representadas incluyen el registro en la plataforma, creación del Currículum Vitae Virtual (CVV), visualización y postulación a ofertas laborales, generación de recomendaciones automáticas y revisión de postulaciones. Asimismo, el administrador posee capacidades relacionadas con la supervisión de usuarios y recomendaciones, mientras que las empresas y áreas internas pueden publicar ofertas y revisar postulaciones asociadas a sus vacantes.
+
+\vspace{5pt}
 
 El diagrama evidencia relaciones de inclusión y extensión entre distintos casos de uso, permitiendo modelar dependencias funcionales dentro del sistema.
 
@@ -761,9 +972,16 @@ El diagrama evidencia relaciones de inclusión y extensión entre distintos caso
 
 El diagrama de clases representa la estructura lógica del sistema mediante las principales entidades, atributos, métodos y relaciones necesarias para el funcionamiento de la plataforma.
 
+\vspace{5pt}
+
 Dentro de las clases más relevantes se encuentran los distintos tipos de usuario, tales como estudiante, empresa, administrador y área interna, además de entidades fundamentales como ofertas laborales, postulaciones, perfiles CVV y recomendaciones. El modelo también incorpora patrones de diseño como Factory Method y Strategy, utilizados para gestionar la creación de usuarios y los algoritmos de recomendación implementados en el sistema.
 
+\vspace{5pt}
+
 El patrón Strategy permite utilizar diferentes estrategias de recomendación, tales como similitud de coseno y correlación de Pearson, mientras que el patrón Factory facilita la creación dinámica de distintos tipos de usuarios dentro de la plataforma.
+
+\vspace{5pt}
+
 
 Las relaciones de asociación, herencia, agregación y composición representadas en el diagrama permiten modelar correctamente las dependencias existentes entre las distintas entidades del sistema.
 
@@ -776,11 +994,19 @@ Las relaciones de asociación, herencia, agregación y composición representada
 
 \subsection{Diagrama de Componentes}
 
+\vspace{5pt}
+
 El diagrama de componentes describe la organización lógica del sistema y la interacción entre sus distintos módulos internos. La solución se encuentra dividida en componentes especializados para la gestión de perfiles, postulaciones, usuarios y recomendaciones.
+
+\vspace{5pt}
 
 Cada componente posee controladores específicos encargados de administrar la lógica asociada a las funcionalidades correspondientes. Entre ellos destacan el controlador de postulaciones, controlador de ofertas, controlador de usuarios y los controladores relacionados con el sistema de recomendación.
 
+\vspace{5pt}
+
 La arquitectura representada utiliza interfaces de comunicación mediante APIs internas, permitiendo desacoplar los componentes y mejorar la mantenibilidad y escalabilidad del sistema. Todos los módulos se comunican finalmente con el componente encargado del acceso y administración de la base de datos.
+
+\vspace{5pt}
 
 Este modelo facilita la modularización del sistema y permite separar claramente las responsabilidades de cada componente lógico dentro de la aplicación web.
 
@@ -795,9 +1021,15 @@ Este modelo facilita la modularización del sistema y permite separar claramente
 
 El diagrama de despliegue representa la estructura física del sistema y la distribución de sus componentes sobre la infraestructura tecnológica propuesta.
 
+\vspace{5pt}
+
 El modelo considera un entorno compuesto por un servicio web accesible para los usuarios, un servidor principal encargado de ejecutar los distintos componentes del sistema y una base de datos centralizada donde se almacena la información relacionada con usuarios, ofertas, postulaciones y perfiles CVV.
 
+\vspace{5pt}
+
 La comunicación entre los distintos componentes se realiza mediante conexiones TCP/IP y APIs internas, permitiendo el intercambio de información entre el servicio web, los controladores de negocio y la capa de persistencia de datos.
+
+\vspace{5pt}
 
 Este despliegue permite que estudiantes, empresas y administradores accedan de forma remota a la plataforma mediante navegadores web desde distintos dispositivos conectados a internet.
 
@@ -812,13 +1044,23 @@ Este despliegue permite que estudiantes, empresas y administradores accedan de f
 
 La arquitectura propuesta para el sistema Finis Trabaja se basa en una estructura multicapa que separa claramente la presentación, la lógica de negocio, el acceso a datos y la persistencia de información.
 
+\vspace{5pt}
+
 La capa de presentación contiene los módulos visibles para el usuario, correspondientes a perfiles, postulaciones y recomendaciones. Estos módulos interactúan con la capa de lógica de negocio mediante APIs internas especializadas.
+
+\vspace{5pt}
 
 La lógica de negocio está compuesta por distintos componentes y controladores encargados de administrar las reglas funcionales del sistema, tales como gestión de usuarios, publicación de ofertas, postulaciones y generación de recomendaciones automáticas.
 
+\vspace{5pt}
+
 Posteriormente, la capa de acceso a datos centraliza la comunicación con la base de datos mediante un controlador especializado encargado de gestionar las operaciones de almacenamiento y consulta.
 
+\vspace{5pt}
+
 Finalmente, la capa de datos almacena la información persistente del sistema, incluyendo usuarios, ofertas laborales, perfiles CVV y postulaciones.
+
+\vspace{5pt}
 
 La separación por capas permite mejorar la mantenibilidad, reutilización de componentes, escalabilidad y organización general de la solución propuesta.
 

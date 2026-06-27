@@ -17,3 +17,10 @@
 *.snm
 *.vrb
 texput.log
+.env
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.claude/
+.vscode/
+.agents

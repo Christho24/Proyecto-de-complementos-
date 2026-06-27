@@ -1,0 +1,82 @@
+{
+  "empresa_id": "empresa_demo_001",
+  "usuarios": [
+    {
+      "id_usuario": "empresa_demo_001",
+      "tipo": "empresa",
+      "nombre_empresa": "TechNova Chile",
+      "correo": "contacto@technova.cl",
+      "rubro": "Tecnología y servicios digitales",
+      "estado_validacion": "aprobada"
+    },
+    {
+      "id_usuario": "estudiante_demo_001",
+      "tipo": "estudiante",
+      "nombre": "Maicol Jojo Hiscas Quispe",
+      "correo": "camila.rojas@uft.edu",
+      "carrera": "Ingeniería Civil Informática"
+    }
+  ],
+  "perfil_cvv": {
+    "estudiante_id": "estudiante_demo_001",
+    "datos_personales": {
+      "nombre": "Maicol Jojo Hiscas Quispe",
+      "correo": "camila.rojas@uft.edu"
+    },
+    "carrera": "Ingeniería Civil Informática",
+    "especialidades": ["Desarrollo de software", "Bases de datos"],
+    "roles": ["Desarrolladora backend", "Analista de datos"],
+    "intereses": ["Tecnología", "Innovación", "Aplicaciones web"],
+    "experiencia": ["Ayudante de programación"],
+    "logros": ["Proyecto académico destacado"],
+    "archivo_adjunto_id": null,
+    "archivo_adjunto_nombre": null,
+    "visibilidad": "empresas"
+  },
+  "ofertas": [
+    {
+      "codigo_demo": "DEV-BACK-01",
+      "titulo": "Desarrollador Backend Junior",
+      "descripcion": "Participarás en el desarrollo de APIs, automatización de pruebas y mejora continua de servicios para productos digitales.",
+      "carrera": "Ingeniería Civil Informática",
+      "sueldo_min": 850000,
+      "sueldo_max": 1150000,
+      "jornada": "Tiempo completo",
+      "ubicacion": "Santiago, Chile",
+      "modalidad": "Híbrida"
+    },
+    {
+      "codigo_demo": "DATA-PRAC-02",
+      "titulo": "Práctica Analítica de Datos",
+      "descripcion": "Apoyarás la preparación de datos, construcción de tableros y análisis de indicadores para distintas áreas de la organización.",
+      "carrera": "Ingeniería Civil Industrial",
+      "sueldo_min": 350000,
+      "sueldo_max": 450000,
+      "jornada": "Tiempo parcial",
+      "ubicacion": "Providencia, Santiago",
+      "modalidad": "Híbrida"
+    },
+    {
+      "codigo_demo": "UX-03",
+      "titulo": "Diseñador UX/UI Trainee",
+      "descripcion": "Colaborarás en investigación de usuarios, prototipado y diseño de interfaces accesibles para plataformas web.",
+      "carrera": "Diseño",
+      "sueldo_min": 650000,
+      "sueldo_max": 850000,
+      "jornada": "Tiempo completo",
+      "ubicacion": "Chile",
+      "modalidad": "Remota"
+    },
+    {
+      "codigo_demo": "QA-04",
+      "titulo": "Analista QA Junior",
+      "descripcion": "Ejecutarás pruebas funcionales, documentarás hallazgos y apoyarás la automatización de controles de calidad del software.",
+      "carrera": "Ingeniería en Informática",
+      "sueldo_min": 700000,
+      "sueldo_max": 900000,
+      "jornada": "Tiempo completo",
+      "ubicacion": "Las Condes, Santiago",
+      "modalidad": "Presencial"
+    }
+  ]
+}
