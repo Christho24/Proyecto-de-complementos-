@@ -537,6 +537,37 @@ Por otra parte, la validación de empresas podría implicar una mitigación de B
 
 Finalmente, ante cualquier falla y en caso de la perduración del proyecto, se podrían establecer procedimientos para la gestión de incidencias y la resolución de problemas, asegurando que cualquier falla sea abordada de manera rápida y eficiente, minimizando el impacto en los usuarios y la plataforma.
 
+\vspace{5pt}
+
+\subsubsection*{Infraestructura del sistema}
+El sistema se implementará en un entorno de servidor web capaz de gestionar múltiples solicitudes de forma simultánea, incluyendo consultas a la base de datos, procesamiento del módulo de recomendación y transferencia de documentos como currículums y archivos adjuntos a postulaciones. Dado que la Universidad Finis Terrae cuenta con aproximadamente 8.400 estudiantes, y considerando que no todos utilizarán la plataforma de forma simultánea, se estima un escenario de carga concurrente moderada, con picos de actividad en períodos de publicación masiva de ofertas o inicio de semestres académicos.
+
+\vspace{5pt}
+
+En cuanto al hardware, el servidor debe cumplir con las siguientes características técnicas mínimas para garantizar un funcionamiento estable y eficiente, esto considerando el número de estudiantes:
+
+\vspace{5pt}
+
+\begin{itemize}
+    \item \textbf{Procesador:} CPU de al menos 4 núcleos físicos (idealmente 8 núcleos) con una frecuencia base de 2.5 GHz o superior, así se pueden atender solicitudes concurrentes sin degradación del tiempo de respuesta.
+    \item \textbf{Memoria RAM:} Mínimo 16 GB de RAM para soportar la ejecución del servidor de aplicaciones, el servidor de base de datos y los procesos del módulo de recomendación de forma simultánea.
+    \item \textbf{Almacenamiento:} Disco de estado sólido (SSD) con una capacidad mínima de 500 GB. Esto considerando el volumen de perfiles CVV, ofertas laborales, documentos adjuntos y respaldos periódicos de la base de datos. 
+    \item \textbf{Conectividad:} Interfaz de red de al menos 1 Gbps, con conexión estable a internet y soporte para tráfico HTTPS cifrado.
+    \item \textbf{Disponibilidad:} El servidor debe contar con una fuente de alimentación redundante o encontrarse respaldado por un sistema UPS (\textit{Uninterruptible Power Supply}) para minimizar interrupciones no planificadas y evitar perdidas de datos.
+\end{itemize}
+
+\vspace{5pt}
+
+En cuanto al software de infraestructura, el servidor debe contar con un sistema operativo de uso servidor, preferentemente una distribución Linux como Ubuntu Server 22.04 LTS, por su estabilidad y compatibilidad con las tecnologías definidas para el proyecto. 
+
+\vspace{5pt}
+
+Adicionalmente, se requiere la configuración de un servidor web como Nginx actuando como proxy inverso, junto con los servicios necesarios para la ejecución del framework y la gestión de la base de datos, además de un certificado SSL/TLS para garantizar la comunicación cifrada conforme a los requisitos legales establecidos anteriormente.
+
+\vspace{5pt}
+
+Finalmente, se considera la posibilidad de implementar el sistema bajo un esquema de computación en la nube (\textit{cloud computing}), utilizando proveedores como AWS, Google Cloud o Microsoft Azure. Esta alternativa presenta ventajas en términos de escalabilidad dinámica, alta disponibilidad y reducción de costos de mantención de hardware físico, permitiendo ajustar los recursos de cómputo y almacenamiento en función de la demanda real del sistema. En cualquiera de los dos escenarios —servidor físico o nube— la arquitectura de despliegue debe garantizar la separación lógica entre el servidor de aplicaciones, el servidor web y la base de datos, conforme a la arquitectura multicapa definida para el sistema.
+
 
 
 
@@ -545,7 +576,11 @@ El proyecto Finis Trabaja se relaciona con otros proyectos de desarrollo de plat
 
 \vspace{5pt}
 
-Adicionalmente, desde una perspectiva transaccional o de intercambio de información, el sistema podría relacionarse con sistemas institucionales y administrativos. Tales como los sistemas académicos o institucionales de la universidad, estos proporcionan información relevante sobre los estudiantes, como la carrera cursada, estado académico (activo o inactivo), datos de contacto y otros antecedentes académicos. Esta información podría utilizarse para la validación de perfiles, del Currículum Vitae Virtual (CVV) y la gestión de usuarios.
+Aun así, en aspectos internos, el sistema no puede relacionarse directamente con plataformas de la universidad Finis Terrae porque no existen proyectos similares a relacionar. Lo más cercano puede ser efinis, una plataforma donde los estudiantes pueden recibir comunicados, además de ver y descargar información de sus cursos, pero no está centrada en una comunicación bidireccional o con información suficiente del estudiantado.
+
+\vspace{5pt}
+
+Sin embargo, a pesar de no contar con proyectos institucionales de enlace directo con Finis Trabaja, la plataforma podría relacionarse con sistemas institucionales y administrativos desde una perspectiva transaccional o de intercambio de información. Estos serían sistemas académicos que contengan información relevante sobre los estudiantes, como la carrera cursada, estado académico (activo o inactivo), datos de contacto y otros antecedentes académicos. Esta información podría utilizarse para la validación de perfiles, del Currículum Vitae Virtual (CVV) y la gestión de usuarios.
 
 \vspace{5pt}
 
@@ -553,15 +588,15 @@ Además, a futuro, podría evolucionar con la integración de mecanismos de aute
 
 \vspace{5pt}
 
-Por otra parte, el sistema se relacionaría con servicios de correo electrónico institucional. Esta integración tendría como finalidad enviar notificaciones a los usuarios sobre nuevas ofertas laborales, actualizaciones en sus postulaciones o cambios relevantes en su perfil. Sin embargo, la información principal continuaría centralizada dentro de Finis Trabaja, utilizando el correo únicamente como un mecanismo complementario de comunicación.
+Por otra parte, el proyecto se relacionaría con servicios de correo electrónico institucional. Esta integración tendría como finalidad enviar notificaciones a los usuarios sobre nuevas ofertas laborales, actualizaciones en sus postulaciones o cambios relevantes en su perfil. Sin embargo, la información principal continuaría centralizada dentro de Finis Trabaja, utilizando el correo únicamente como un mecanismo complementario de comunicación.
 
 \vspace{5pt}
 
-Otro aspecto a considerar es el almacenamiento de archivos adjuntos, como certificados o documentos relevantes para el perfil del estudiante. En este caso, se podría integrar con servicios de almacenamiento en la nube, para permitir a los usuarios subir y gestionar los documentos de manera segura y accesible desde la plataforma. Esto facilitaría la gestión de archivos pero mantendría la información principal del perfil dentro de Finis Trabaja para el proceso de recomendación y conexión con las ofertas laborales.
+Otro aspecto que considerar es el almacenamiento de archivos adjuntos, como certificados o documentos relevantes para el perfil del estudiante. En este caso, se podría integrar con servicios de almacenamiento en la nube, para permitir a los usuarios subir y gestionar los documentos de manera segura y accesible desde la plataforma. Esto facilitaría la gestión de archivos pero mantendría la información principal del perfil dentro de Finis Trabaja para el proceso de recomendación y conexión con las ofertas laborales.
 
 \vspace{5pt}
 
-Finalmente, en conjunto, estas integraciones y relaciones con otros sistemas y servicios institucionales contribuirían a crear un ecosistema digital más cohesivo y eficiente, mejorando la experiencia del usuario y optimizando la gestión de información relevante para la vinculación laboral de los estudiantes y egresados de la Universidad Finis Terrae.
+Finalmente, en conjunto, estas integraciones y relaciones contribuirían a crear un ecosistema digital más cohesivo y eficiente, mejorando la experiencia del usuario y optimizando la gestión de información relevante para la vinculación laboral de los estudiantes y egresados de la Universidad Finis Terrae.
 
 
 
