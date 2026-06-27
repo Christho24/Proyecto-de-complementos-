@@ -1,35 +1,21 @@
-# Finis Trabaja — entrega funcional
+# Finis Trabaja
 
-Prototipo web de los dos flujos solicitados:
+Prototipo web para gestionar ofertas laborales y postulaciones de estudiantes.
 
-1. Una empresa visualiza sus ofertas habilitadas y puede publicar una nueva.
-2. Un estudiante visualiza las ofertas de esa empresa y postula a una. La oferta
-   postulada deja de aparecer para ese estudiante, incluso después de actualizar.
+La aplicacion permite:
 
-No incluye registro, inicio de sesión, administración ni recomendaciones. La
-empresa, el estudiante y su PerfilCVV son datos de demostración precargados.
+1. Que una empresa publique, visualice y elimine ofertas habilitadas.
+2. Que un estudiante visualice todas las ofertas de la empresa y postule a una.
+3. Que la empresa revise postulantes, cartas de presentacion y CV enviados.
+4. Que el estudiante postule usando un PDF propio o su PerfilCVV de la plataforma.
 
-## Arquitectura
+El codigo de la aplicacion esta en `Codigo/Src/`.
 
-El código está en `Codigo/Src/` y sigue la planificación del proyecto:
+## Ejecucion Recomendada Con Docker
 
-```text
-presentacion/       HTML + CSS + JavaScript
-       ↓ API REST
-logica_negocio/     Controladores de ofertas, postulaciones y usuarios
-       ↓
-acceso_datos/       ControladorBaseDatos
-       ↓
-MongoDB             Usuarios, PerfilCVV, Ofertas y Postulaciones
-```
+Requisito: tener Docker Desktop abierto.
 
-Las entidades implementadas conservan los atributos del diagrama de clases:
-`Ofertas` (título, descripción, carrera, rango de sueldo, jornada, ubicación y
-modalidad), `Postulacion` (fecha y estado), `Usuarios` y `PerfilCVV`.
-
-## Ejecución recomendada con Docker
-
-Requisito: Docker Desktop.
+Desde la raiz del proyecto:
 
 ```powershell
 cd Codigo\Src
@@ -37,24 +23,38 @@ docker compose up -d --build
 docker compose exec web python scripts/cargar_datos_demo.py
 ```
 
-Abrir <http://localhost:5000>. MongoDB queda expuesto en
-`mongodb://localhost:18000/`, tal como exige la entrega.
+Luego abrir:
 
-Para detener:
+- Inicio: http://localhost:5000/
+- Vista empresa: http://localhost:5000/empresa
+- Vista estudiante: http://localhost:5000/estudiante
+- Salud de API: http://localhost:5000/api/salud
+
+MongoDB queda disponible en:
+
+```text
+mongodb://localhost:18000/
+```
+
+## Detener Los Servicios
+
+Desde `Codigo/Src/`:
 
 ```powershell
 docker compose down
 ```
 
-Para borrar también los datos persistidos:
+Para detener y borrar tambien los datos guardados en MongoDB:
 
 ```powershell
 docker compose down -v
 ```
 
-## Ejecución local
+## Ejecucion Local Sin Docker
 
-Con MongoDB ejecutándose en el puerto `18000`:
+Requisito: tener MongoDB ejecutandose en el puerto `18000`.
+
+Desde la raiz del proyecto:
 
 ```powershell
 cd Codigo\Src
@@ -65,31 +65,38 @@ python scripts\cargar_datos_demo.py
 python app.py
 ```
 
-## Direcciones de demostración
+Luego abrir http://localhost:5000/.
 
-- Inicio: <http://localhost:5000/>
-- Empresa: <http://localhost:5000/empresa>
-- Estudiante: <http://localhost:5000/estudiante>
-- Salud de API: <http://localhost:5000/api/salud>
+## Ejecutar Pruebas
 
-Los IDs de empresa y estudiante solo seleccionan los perfiles precargados desde
-MongoDB; no implementan autenticación.
+Con Docker:
 
-## Pruebas
+```powershell
+cd Codigo\Src
+docker compose exec web python -m unittest discover -s tests -v
+```
 
-Desde `Codigo/Src/`:
+Sin Docker, desde `Codigo/Src/` y con las dependencias instaladas:
 
 ```powershell
 python -m unittest discover -s tests -v
 ```
 
-Las pruebas verifican creación y listado de ofertas, carga de perfiles desde la
-capa de datos, postulación con CV, revisión de postulantes, desaparición de una
-oferta postulada, bloqueo de duplicados y validaciones principales.
+## Arquitectura
+
+```text
+presentacion/       HTML + CSS + JavaScript
+       -> API REST
+logica_negocio/     Controladores de ofertas, postulaciones y usuarios
+       ->
+acceso_datos/       ControladorBaseDatos
+       ->
+MongoDB             Usuarios, PerfilCVV, Ofertas, Postulaciones y Curriculums
+```
 
 ## Integrantes
 
 - Christopher Abarca
-- Benjamín Echeverría
+- Benjamin Echeverria
 - Maico Huillca
 - Camila Romero

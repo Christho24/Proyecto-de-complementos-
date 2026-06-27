@@ -10,6 +10,9 @@ const orden = document.querySelector("#orden");
 const modal = document.querySelector("#modal-postulacion");
 const formulario = document.querySelector("#formulario-postulacion");
 const carta = formulario.querySelector("textarea");
+const campoArchivoCv = document.querySelector("#campo-archivo-cv");
+const inputCurriculum = formulario.elements.curriculum;
+const vistaPerfilCvv = document.querySelector("#vista-perfil-cvv");
 const notificacion = document.querySelector("#notificacion");
 let ofertas = [];
 
@@ -42,25 +45,27 @@ function ofertasVisibles() {
 function renderizar() {
   const datos = ofertasVisibles();
   estadoCarga.hidden = true;
-  contador.textContent = `${datos.length} ${datos.length === 1 ? "oportunidad disponible" : "oportunidades disponibles"}`;
+  contador.textContent = `${datos.length} ${datos.length === 1 ? "oferta habilitada" : "ofertas habilitadas"}`;
   if (!datos.length) {
-    lista.innerHTML = `<div class="estado"><div><h3>No encontramos ofertas disponibles</h3><p>Puede que ya hayas postulado o que no coincidan con tu búsqueda.</p></div></div>`;
+    lista.innerHTML = `<div class="estado"><div><h3>No encontramos ofertas</h3><p>No hay oportunidades habilitadas o no coinciden con tu búsqueda.</p></div></div>`;
     return;
   }
   lista.innerHTML = datos.map(oferta => `
-    <article class="oferta">
+    <article class="oferta${oferta.postulada ? " postulada" : ""}">
       <div class="tope"><span class="empresa-icono">${escapar(empresaIniciales)}</span><span class="modalidad">${escapar(oferta.modalidad)}</span></div>
       <h3>${escapar(oferta.titulo)}</h3>
       <p class="empresa-nombre">${escapar(empresaNombre)}</p>
       <p class="descripcion">${escapar(oferta.descripcion)}</p>
       <div class="datos">
-        <span>◉ ${escapar(oferta.ubicacion)}</span>
-        <span>◷ ${escapar(oferta.jornada)}</span>
+        <span>◎ ${escapar(oferta.ubicacion)}</span>
+        <span>▷ ${escapar(oferta.jornada)}</span>
         <span>▣ ${escapar(oferta.carrera)}</span>
       </div>
       <div class="pie">
-        <span class="sueldo">${moneda(oferta.sueldo_min)} – ${moneda(oferta.sueldo_max)}</span>
-        <button class="boton primario postular" type="button" data-id="${oferta.id}" data-titulo="${escapar(oferta.titulo)}">Postular</button>
+        <span class="sueldo">${moneda(oferta.sueldo_min)} - ${moneda(oferta.sueldo_max)}</span>
+        ${oferta.postulada
+          ? `<button class="boton secundario postular" type="button" disabled>Ya postulaste</button>`
+          : `<button class="boton primario postular" type="button" data-id="${oferta.id}" data-titulo="${escapar(oferta.titulo)}">Postular</button>`}
       </div>
     </article>
   `).join("");
@@ -70,7 +75,7 @@ async function cargarOfertas() {
   estadoCarga.hidden = false;
   lista.innerHTML = "";
   try {
-    const ruta = `/api/empresas/${encodeURIComponent(empresaId)}/ofertas/disponibles?estudiante_id=${encodeURIComponent(estudianteId)}`;
+    const ruta = `/api/empresas/${encodeURIComponent(empresaId)}/ofertas/estudiante?estudiante_id=${encodeURIComponent(estudianteId)}`;
     const respuesta = await fetch(ruta);
     const resultado = await respuesta.json();
     if (!respuesta.ok) throw new Error(resultado.error || "No fue posible cargar las ofertas.");
@@ -85,7 +90,7 @@ async function cargarOfertas() {
 
 lista.addEventListener("click", evento => {
   const boton = evento.target.closest(".postular");
-  if (!boton) return;
+  if (!boton || boton.disabled) return;
   formulario.elements.oferta_id.value = boton.dataset.id;
   document.querySelector("#titulo-modal").textContent = boton.dataset.titulo;
   modal.showModal();
@@ -99,12 +104,25 @@ carta.addEventListener("input", () => {
   document.querySelector("#caracteres").textContent = `${carta.value.length} / 1500`;
 });
 
+function actualizarOrigenCv() {
+  const origen = formulario.elements.origen_cv.value;
+  const usaArchivo = origen === "archivo";
+  campoArchivoCv.hidden = !usaArchivo;
+  vistaPerfilCvv.hidden = usaArchivo;
+  inputCurriculum.required = usaArchivo;
+  if (!usaArchivo) inputCurriculum.value = "";
+}
+
+formulario.elements.origen_cv.forEach(control =>
+  control.addEventListener("change", actualizarOrigenCv)
+);
+
 formulario.addEventListener("submit", async evento => {
   evento.preventDefault();
   const ofertaId = formulario.elements.oferta_id.value;
   const boton = formulario.querySelector("[type=submit]");
   boton.disabled = true;
-  boton.textContent = "Enviando…";
+  boton.textContent = "Enviando...";
   try {
     const datos = new FormData(formulario);
     datos.set("estudiante_id", estudianteId);
@@ -114,8 +132,11 @@ formulario.addEventListener("submit", async evento => {
     });
     const resultado = await respuesta.json();
     if (!respuesta.ok) throw new Error(resultado.error || "No fue posible postular.");
-    ofertas = ofertas.filter(oferta => oferta.id !== ofertaId);
+    ofertas = ofertas.map(oferta =>
+      oferta.id === ofertaId ? { ...oferta, postulada: true } : oferta
+    );
     formulario.reset();
+    actualizarOrigenCv();
     document.querySelector("#caracteres").textContent = "0 / 1500";
     modal.close();
     renderizar();
@@ -128,4 +149,5 @@ formulario.addEventListener("submit", async evento => {
   }
 });
 
+actualizarOrigenCv();
 cargarOfertas();

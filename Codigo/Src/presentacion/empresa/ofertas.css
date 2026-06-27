@@ -62,6 +62,7 @@ h1 { margin: 0; color: var(--azul); font: 800 36px/1.1 "Manrope", sans-serif; le
 .fecha { margin-top: 8px; color: #9aa5b4; font-size: 11px; text-align: right; }
 .acciones-oferta { display: grid; justify-items: end; gap: 5px; }
 .postulantes-btn { min-height: 34px; margin-top: 7px; padding: 0 12px; color: var(--azul); background: white; border: 1px solid var(--borde); font-size: 11px; }
+.eliminar-oferta-btn { min-height: 34px; padding: 0 12px; color: #b72c3d; background: #fff5f6; border: 1px solid #f4c6cd; font-size: 11px; }
 .estado { display: grid; place-items: center; min-height: 250px; color: var(--muted); text-align: center; }
 .estado[hidden] { display: none; }
 .spinner { width: 26px; height: 26px; border: 3px solid #e4e9ef; border-top-color: var(--rojo); border-radius: 50%; animation: girar .7s linear infinite; }
@@ -92,6 +93,13 @@ dialog::backdrop { background: rgb(14 29 50 / 55%); backdrop-filter: blur(3px); 
 .datos-postulante blockquote { margin: 12px 0 0; padding: 10px 12px; color: #536176; background: #f6f8fa; border-left: 3px solid #cbd5e1; font-size: 12px; line-height: 1.5; }
 .datos-postulante .sin-carta { margin-top: 10px; font-style: italic; }
 .descargar-cv { min-height: 36px; color: white; background: var(--azul); text-decoration: none; font-size: 11px; }
+.cvv-postulacion { width: min(280px, 100%); padding: 12px; background: #f7f9fb; border: 1px solid var(--borde); border-radius: 8px; }
+.cvv-postulacion h4 { margin: 0 0 6px; color: var(--azul); font-size: 13px; }
+.cvv-postulacion p { margin: 0 0 9px; color: var(--muted); font-size: 11px; }
+.cvv-postulacion dl { display: grid; gap: 7px; margin: 0; }
+.cvv-postulacion div { display: grid; gap: 2px; }
+.cvv-postulacion dt { color: #4c5a6d; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; }
+.cvv-postulacion dd { margin: 0; color: var(--texto); font-size: 11px; line-height: 1.35; }
 
 @media (max-width: 850px) {
   .sidebar { position: static; width: 100%; height: auto; flex-direction: row; align-items: center; padding: 14px 18px; }
@@ -108,7 +116,7 @@ dialog::backdrop { background: rgb(14 29 50 / 55%); backdrop-filter: blur(3px); 
   .acciones-oferta { justify-items: start; }
   .fecha { text-align: left; }
   .postulante { grid-template-columns: 42px 1fr; }
-  .descargar-cv { grid-column: 2; justify-self: start; }
+  .descargar-cv, .cvv-postulacion { grid-column: 2; justify-self: start; }
   .campos { grid-template-columns: 1fr; }
   .campo.ancho { grid-column: auto; }
 }

@@ -17,6 +17,13 @@ class ControladorOfertas:
             empresa_id, estudiante_id
         )
 
+    def listar_para_estudiante(self, empresa_id, estudiante_id):
+        if not empresa_id or not estudiante_id:
+            raise ValueError("Debe indicar empresa y estudiante.")
+        return self.base_datos.listar_ofertas_estudiante(
+            empresa_id, estudiante_id
+        )
+
     def publicar(self, empresa_id, datos):
         oferta = Oferta(
             empresa_id=empresa_id,
@@ -30,6 +37,14 @@ class ControladorOfertas:
             modalidad=str(datos.get("modalidad", "")).strip(),
         )
         return self.base_datos.crear_oferta(oferta.a_documento())
+
+    def eliminar(self, empresa_id, oferta_id):
+        if not empresa_id or not oferta_id:
+            raise ValueError("Debe indicar empresa y oferta.")
+        eliminada = self.base_datos.eliminar_oferta(oferta_id, empresa_id)
+        if not eliminada:
+            raise ValueError("La oferta no existe o no pertenece a la empresa.")
+        return {"id": oferta_id, "estado": "eliminada"}
 
     @staticmethod
     def _entero(valor, nombre):

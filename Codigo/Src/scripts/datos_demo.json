@@ -12,7 +12,7 @@
     {
       "id_usuario": "estudiante_demo_001",
       "tipo": "estudiante",
-      "nombre": "Camila Rojas",
+      "nombre": "Maicol Jojo Hiscas Quispe",
       "correo": "camila.rojas@uft.edu",
       "carrera": "Ingeniería Civil Informática"
     }
@@ -20,7 +20,7 @@
   "perfil_cvv": {
     "estudiante_id": "estudiante_demo_001",
     "datos_personales": {
-      "nombre": "Camila Rojas",
+      "nombre": "Maicol Jojo Hiscas Quispe",
       "correo": "camila.rojas@uft.edu"
     },
     "carrera": "Ingeniería Civil Informática",

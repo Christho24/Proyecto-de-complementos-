@@ -23,12 +23,32 @@ def crear_api(
         )
         return jsonify({"mensaje": "Oferta publicada correctamente.", "datos": oferta}), 201
 
+    @api.delete("/empresas/<empresa_id>/ofertas/<oferta_id>")
+    def eliminar_oferta(empresa_id, oferta_id):
+        oferta = controlador_ofertas.eliminar(empresa_id, oferta_id)
+        return jsonify(
+            {
+                "mensaje": "Oferta eliminada correctamente.",
+                "datos": oferta,
+            }
+        )
+
     @api.get("/empresas/<empresa_id>/ofertas/disponibles")
     def ofertas_disponibles(empresa_id):
         estudiante_id = request.args.get(
             "estudiante_id", config["ESTUDIANTE_DEMO_ID"]
         )
         ofertas = controlador_ofertas.listar_disponibles(
+            empresa_id, estudiante_id
+        )
+        return jsonify({"datos": ofertas, "total": len(ofertas)})
+
+    @api.get("/empresas/<empresa_id>/ofertas/estudiante")
+    def ofertas_estudiante(empresa_id):
+        estudiante_id = request.args.get(
+            "estudiante_id", config["ESTUDIANTE_DEMO_ID"]
+        )
+        ofertas = controlador_ofertas.listar_para_estudiante(
             empresa_id, estudiante_id
         )
         return jsonify({"datos": ofertas, "total": len(ofertas)})
@@ -41,8 +61,15 @@ def crear_api(
                 "estudiante_id", config["ESTUDIANTE_DEMO_ID"]
             ),
             curriculum=request.files.get("curriculum"),
+            origen_cv=request.form.get("origen_cv", "archivo"),
             carta_presentacion=request.form.get("carta_presentacion", ""),
         )
+        return jsonify(
+            {
+                "mensaje": "Postulación enviada correctamente.",
+                "datos": postulacion,
+            }
+        ), 201
 
     @api.get("/usuarios/<usuario_id>")
     def obtener_usuario(usuario_id):
@@ -53,12 +80,6 @@ def crear_api(
     def obtener_perfil_cvv(estudiante_id):
         perfil = controlador_usuarios.obtener_perfil(estudiante_id)
         return jsonify({"datos": perfil})
-        return jsonify(
-            {
-                "mensaje": "Postulación enviada correctamente.",
-                "datos": postulacion,
-            }
-        ), 201
 
     @api.get("/ofertas/<oferta_id>/postulaciones")
     def postulaciones_oferta(oferta_id):

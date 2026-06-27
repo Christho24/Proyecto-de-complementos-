@@ -2,7 +2,7 @@ from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 
 
-MODALIDADES = {"Presencial", "Remota", "Híbrida"}
+MODALIDADES = {"Presencial", "Remota", "Hibrida", "Híbrida"}
 JORNADAS = {"Tiempo completo", "Tiempo parcial"}
 
 
@@ -55,24 +55,22 @@ class Postulacion:
     oferta_id: str
     estudiante_id: str
     estudiante_nombre: str
-    cv_archivo_id: str
-    cv_nombre: str
+    cv_archivo_id: str = ""
+    cv_nombre: str = ""
+    origen_cv: str = "archivo"
+    perfil_cvv: dict | None = None
     carta_presentacion: str = ""
     estado: str = "enviada"
 
     def validar(self):
-        if not all(
-            (
-                self.oferta_id,
-                self.estudiante_id,
-                self.estudiante_nombre,
-                self.cv_archivo_id,
-                self.cv_nombre,
-            )
-        ):
-            raise ValueError(
-                "La oferta, el estudiante y el currículum son obligatorios."
-            )
+        if not all((self.oferta_id, self.estudiante_id, self.estudiante_nombre)):
+            raise ValueError("La oferta y el estudiante son obligatorios.")
+        if self.origen_cv not in {"archivo", "plataforma"}:
+            raise ValueError("El origen del currículum no es válido.")
+        if self.origen_cv == "archivo" and not (self.cv_archivo_id and self.cv_nombre):
+            raise ValueError("Debe adjuntar el currículum en formato PDF.")
+        if self.origen_cv == "plataforma" and not self.perfil_cvv:
+            raise ValueError("El PerfilCVV de la plataforma no está disponible.")
         if len(self.carta_presentacion) > 1500:
             raise ValueError("La carta de presentación no puede superar 1500 caracteres.")
 

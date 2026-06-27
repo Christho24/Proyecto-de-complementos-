@@ -55,9 +55,36 @@ class ControladorBaseDatos:
         cursor = self.ofertas.find(filtro).sort("fecha_publicacion", DESCENDING)
         return [self._serializar(documento) for documento in cursor]
 
+    def listar_ofertas_estudiante(self, empresa_id, estudiante_id):
+        postuladas = set(
+            self.postulaciones.distinct(
+                "oferta_id", {"estudiante_id": estudiante_id}
+            )
+        )
+        cursor = self.ofertas.find(
+            {"empresa_id": empresa_id, "estado": "habilitada"}
+        ).sort("fecha_publicacion", DESCENDING)
+        ofertas = [self._serializar(documento) for documento in cursor]
+        for oferta in ofertas:
+            oferta["postulada"] = oferta["id"] in postuladas
+        return ofertas
+
     def crear_oferta(self, documento):
         resultado = self.ofertas.insert_one(documento)
         return self.obtener_oferta(str(resultado.inserted_id))
+
+    def eliminar_oferta(self, oferta_id, empresa_id):
+        if not self._es_object_id(oferta_id):
+            return None
+        resultado = self.ofertas.update_one(
+            {
+                "_id": ObjectId(oferta_id),
+                "empresa_id": empresa_id,
+                "estado": "habilitada",
+            },
+            {"$set": {"estado": "eliminada"}},
+        )
+        return resultado.modified_count == 1
 
     def obtener_oferta(self, oferta_id):
         if not self._es_object_id(oferta_id):

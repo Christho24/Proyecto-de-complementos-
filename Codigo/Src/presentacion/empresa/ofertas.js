@@ -21,6 +21,35 @@ const moneda = valor =>
 const fecha = valor =>
   valor ? new Intl.DateTimeFormat("es-CL", { day: "2-digit", month: "short", year: "numeric" }).format(new Date(valor)) : "Fecha no disponible";
 
+function textoLista(valores = []) {
+  return Array.isArray(valores) && valores.length ? valores.join(", ") : "Sin datos";
+}
+
+function renderizarCv(postulacion) {
+  if (postulacion.origen_cv !== "plataforma") {
+    return `
+      <a class="boton descargar-cv" href="/api/curriculums/${encodeURIComponent(postulacion.cv_archivo_id)}">
+        Descargar CV
+      </a>
+    `;
+  }
+  const perfil = postulacion.perfil_cvv || {};
+  const datos = perfil.datos_personales || {};
+  return `
+    <section class="cvv-postulacion">
+      <h4>PerfilCVV de la plataforma</h4>
+      <p>${escapar(datos.correo || "")} ${perfil.carrera ? `· ${escapar(perfil.carrera)}` : ""}</p>
+      <dl>
+        <div><dt>Especialidades</dt><dd>${escapar(textoLista(perfil.especialidades))}</dd></div>
+        <div><dt>Roles</dt><dd>${escapar(textoLista(perfil.roles))}</dd></div>
+        <div><dt>Intereses</dt><dd>${escapar(textoLista(perfil.intereses))}</dd></div>
+        <div><dt>Experiencia</dt><dd>${escapar(textoLista(perfil.experiencia))}</dd></div>
+        <div><dt>Logros</dt><dd>${escapar(textoLista(perfil.logros))}</dd></div>
+      </dl>
+    </section>
+  `;
+}
+
 function mostrarNotificacion(mensaje, esError = false) {
   notificacion.textContent = mensaje;
   notificacion.className = `notificacion visible${esError ? " error" : ""}`;
@@ -55,6 +84,10 @@ function renderizar(datos) {
         <button class="boton postulantes-btn" type="button"
           data-id="${oferta.id}" data-titulo="${escapar(oferta.titulo)}">
           Ver postulantes (${oferta.total_postulantes || 0})
+        </button>
+        <button class="boton eliminar-oferta-btn" type="button"
+          data-id="${oferta.id}" data-titulo="${escapar(oferta.titulo)}">
+          Eliminar
         </button>
       </div>
     </article>
@@ -91,6 +124,30 @@ modal.addEventListener("click", evento => {
 });
 
 lista.addEventListener("click", async evento => {
+  const eliminar = evento.target.closest(".eliminar-oferta-btn");
+  if (eliminar) {
+    const titulo = eliminar.dataset.titulo;
+    if (!window.confirm(`¿Eliminar la oferta "${titulo}"?`)) return;
+    eliminar.disabled = true;
+    eliminar.textContent = "Eliminando...";
+    try {
+      const respuesta = await fetch(
+        `/api/empresas/${encodeURIComponent(empresaId)}/ofertas/${encodeURIComponent(eliminar.dataset.id)}`,
+        { method: "DELETE" }
+      );
+      const resultado = await respuesta.json();
+      if (!respuesta.ok) throw new Error(resultado.error || "No fue posible eliminar la oferta.");
+      ofertas = ofertas.filter(oferta => oferta.id !== eliminar.dataset.id);
+      renderizar(ofertas);
+      mostrarNotificacion(resultado.mensaje);
+    } catch (error) {
+      eliminar.disabled = false;
+      eliminar.textContent = "Eliminar";
+      mostrarNotificacion(error.message, true);
+    }
+    return;
+  }
+
   const boton = evento.target.closest(".postulantes-btn");
   if (!boton) return;
   document.querySelector("#titulo-postulantes").textContent = boton.dataset.titulo;
@@ -115,9 +172,7 @@ lista.addEventListener("click", async evento => {
             ? `<blockquote>${escapar(postulacion.carta_presentacion)}</blockquote>`
             : `<p class="sin-carta">Sin carta de presentación.</p>`}
         </div>
-        <a class="boton descargar-cv" href="/api/curriculums/${encodeURIComponent(postulacion.cv_archivo_id)}">
-          Descargar CV
-        </a>
+        ${renderizarCv(postulacion)}
       </article>
     `).join("");
   } catch (error) {

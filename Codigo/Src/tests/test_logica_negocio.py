@@ -37,6 +37,17 @@ class BaseDatosFalsa:
         self.ofertas.append(documento)
         return documento
 
+    def eliminar_oferta(self, oferta_id, empresa_id):
+        oferta = self.obtener_oferta(oferta_id)
+        if (
+            not oferta
+            or oferta["empresa_id"] != empresa_id
+            or oferta["estado"] != "habilitada"
+        ):
+            return False
+        oferta["estado"] = "eliminada"
+        return True
+
     def listar_ofertas_empresa(self, empresa_id):
         return [
             oferta for oferta in self.ofertas
@@ -52,6 +63,17 @@ class BaseDatosFalsa:
         return [
             oferta for oferta in self.listar_ofertas_empresa(empresa_id)
             if oferta["id"] not in ids_postulados
+        ]
+
+    def listar_ofertas_estudiante(self, empresa_id, estudiante_id):
+        ids_postulados = {
+            postulacion["oferta_id"]
+            for postulacion in self.postulaciones
+            if postulacion["estudiante_id"] == estudiante_id
+        }
+        return [
+            {**oferta, "postulada": oferta["id"] in ids_postulados}
+            for oferta in self.listar_ofertas_empresa(empresa_id)
         ]
 
     def obtener_oferta(self, oferta_id):
@@ -136,7 +158,7 @@ class FlujosEntregaTest(unittest.TestCase):
             oferta_id,
             estudiante_id,
             CurriculumFalso(),
-            "Me interesa esta oportunidad.",
+            carta_presentacion="Me interesa esta oportunidad.",
         )
 
     def test_oferta_publicada_aparece_en_listado_empresa(self):
@@ -144,11 +166,22 @@ class FlujosEntregaTest(unittest.TestCase):
         listado = self.ofertas.listar_habilitadas("empresa_1")
         self.assertEqual(listado[0]["id"], creada["id"])
 
-    def test_oferta_postulada_desaparece_para_estudiante(self):
+    def test_empresa_puede_eliminar_oferta(self):
+        creada = self.ofertas.publicar("empresa_1", self.datos)
+        resultado = self.ofertas.eliminar("empresa_1", creada["id"])
+        self.assertEqual(resultado["estado"], "eliminada")
+        self.assertEqual(self.ofertas.listar_habilitadas("empresa_1"), [])
+        self.assertEqual(
+            self.ofertas.listar_para_estudiante("empresa_1", "estudiante_1"),
+            [],
+        )
+
+    def test_oferta_postulada_sigue_visible_y_marcada_para_estudiante(self):
         creada = self.ofertas.publicar("empresa_1", self.datos)
         self.postular(creada["id"])
-        disponibles = self.ofertas.listar_disponibles("empresa_1", "estudiante_1")
-        self.assertEqual(disponibles, [])
+        ofertas = self.ofertas.listar_para_estudiante("empresa_1", "estudiante_1")
+        self.assertEqual(ofertas[0]["id"], creada["id"])
+        self.assertTrue(ofertas[0]["postulada"])
 
     def test_no_permite_postular_dos_veces(self):
         creada = self.ofertas.publicar("empresa_1", self.datos)
@@ -180,10 +213,21 @@ class FlujosEntregaTest(unittest.TestCase):
             listado[0]["estudiante_nombre"], "Estudiante de prueba"
         )
         self.assertEqual(listado[0]["cv_archivo_id"], postulacion["cv_archivo_id"])
-        self.assertEqual(
-            self.db.perfil["archivo_adjunto_id"],
-            postulacion["cv_archivo_id"],
+        self.assertNotIn("archivo_adjunto_id", self.db.perfil)
+
+    def test_postulacion_puede_usar_perfil_cvv_sin_crear_archivo(self):
+        creada = self.ofertas.publicar("empresa_1", self.datos)
+        postulacion = self.postulaciones.registrar(
+            creada["id"],
+            "estudiante_1",
+            None,
+            origen_cv="plataforma",
+            carta_presentacion="Uso mi PerfilCVV.",
         )
+        self.assertEqual(postulacion["origen_cv"], "plataforma")
+        self.assertEqual(postulacion["cv_archivo_id"], "")
+        self.assertEqual(postulacion["perfil_cvv"]["carrera"], self.db.perfil["carrera"])
+        self.assertEqual(self.db.archivos, {})
 
     def test_curriculum_debe_ser_pdf(self):
         creada = self.ofertas.publicar("empresa_1", self.datos)
